@@ -54,8 +54,31 @@ public class TypeCastingExam {
 		
 		int i_result2 = (int)total / count;
 		
+//		String ccc = "100";
+//		int dddd = (int)ccc;
+		
+		/*
+		 * 1. 내 나이 : int
+		 * 2. 운전면허 보유 여부 : boolean
+		 * 3. 우리집의 스마트폰 개수 : int
+		 * 4. 내 이름 : String
+		 * 5. 소수점까지의 온도 : double
+		 * 6. 1.2999와 1.3이 같은가? : boolean
+		 * 7. 1평이 3.3제곱미터일때 5평 : double
+		 */
+		
 		// 깜짝퀴즈
 		// 그럼 주최자는 얼마를 내야 하는가?
+		/*
+		 * 전체 금액에서 한명 당 내야 하는 금액
+		 * int 한명당 = 10000원
+		 * 
+		 */
+		double e2 = (total / count);
+        int g21 = (int)total / count;
+        float h2 = (float) ((e2 - (double)g21) * count);
+        float f2 = (float) h2 + g21;
+        System.out.println("총 금액은 " + f2 + "만원입니다.\n슬퍼하지 마세요. 더치페이로 다시 돌려드릴게요.");
 		
 		// 진짜 문제
 		/*
