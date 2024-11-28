@@ -192,6 +192,37 @@ public class OpExam {
 		int score = 95;
 		char grade = (score  > 90) ? 'A' : 'B';
 		
+		// 문제 5
+		int var1 = 5;
+		int var2 = 2;
+		double var3 = (double)var1 / var2;
+		System.out.println("var3 : "+ var3);
+		
+		// 문제 6
+		int value = 356;
+		System.out.println(
+			(value / 100) * 100
+		);
+		
+		System.out.println(value - (value % 100));
+		
+		value = value / 100;
+		value = value * 100;
+		value /= 100;
+		value *= 100;
+		
+		// 깜짝퀴즈
+		// v1 / v2의 값을 소수점 3자리까지만 출력
+		double v1 = 1000;
+		double v2 = 457;
+		
+		// 코딩
+		double v3 = (v1 / v2) * 1000;
+		int v4 = (int)v3;
+		double v5 = (double)v4 / 1000;
+		
+		System.out.println(v5);
+		
 	}
 
 }
