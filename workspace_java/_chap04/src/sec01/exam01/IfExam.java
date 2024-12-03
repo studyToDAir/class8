@@ -281,16 +281,45 @@ public class IfExam {
 //		System.out.println("월을 입력하세요");
 //		int month = scan.nextInt();
 		
-		// 어려운 문제 1.
+		// 응용 문제 1.
 		// 두자리 정수가
 		// 10의 자리와 1의자리가 같은지 판단
 		int num = 33;	// 같음
-		num = 64;		// 다름
+//		num = 64;		// 다름
 		
-		// 어려운 문제 2.
-		// 사각형의 한쪽 모서리 : (10, 20)
+		int n10 = num / 10;	// 10의 자리
+		int n1  = num % 10; // 1의 자리
+		
+		if(n10 == n1) {
+			System.out.println(n10 +"과 "+ n1 +"은 같음");
+		} else {
+			System.out.println(n10 +"과 "+ n1 +"은 다름");
+			
+		}
+		
+		// 응용 문제 2.
+		// 직각사각형의 한쪽 모서리 : (10, 20)
 		// 다른쪽 모서리 : (90, 100)
 		// 새로운 점 : xc, yc가 직각사각형에 포함 되는가?
+		
+		int xx1 = 10;
+		int yy1 = 20;
+		
+		int xx2 = 90;
+		int yy2 = 100;
+		
+		int xx3 = 30;
+		int yy3 = 40;
+		
+		if( 
+				( (xx1 <= xx3) && (xx3 <= xx2) )	// x축 안에 있는가
+				&&									// 그리고
+				( (yy1 <= yy3) && (yy3 <= yy2) )	// y축 안에 있는가
+		) {
+			System.out.println("사각형과 충돌");
+		} else {
+			System.out.println("사각형과 충돌하지 않음");
+		}
 		
 		
 		// random 사용법
@@ -323,8 +352,182 @@ public class IfExam {
 		int rnd2 = rnd1 % 6;
 		int rnd3 = rnd2 + 1;
 		
-		// 가위 바위 보 게임
 		
+		// swap
+		// 수박, 볼링공
+		String str1 = "수박";
+		String str2 = "볼링공";
+		
+		String str3 = str1;
+		str1 = str2;
+		str2 = str3;
+		
+		System.out.println(str1);
+		System.out.println(str2);
+		
+		// 가위 바위 보 게임
+		//   1    2  3
+		int player = 3;	// TODO Scanner?
+		int npc = 1;	// random?
+		
+//		Scanner scan = new Scanner(System.in);
+//		System.out.println("1:가위, 2:바위, 3:보 ?");
+//		player = scan.nextInt();
+		
+		// 1~3
+		// 0~2 구해서 +1
+		npc = (int)(Math.random()*3) + 1;
+		System.out.println("npc : "+ npc);
+		
+		if(player == 1) {
+			System.out.println("사용자 : 가위");
+		}
+		
+		// 내가 가위
+		if(player == npc) {
+//		if(player == 1 && npc == 1) {
+			System.out.println("비김");
+		} else if (player == 1 && npc == 3) {
+			System.out.println("이김");
+		} else if (player == 1 && npc == 2) {
+			System.out.println("짐");
+		
+		// 내가 바위
+//		} else if(player == 2 && npc == 2) {
+//			System.out.println("비김");
+		} else if (player == 2 && npc == 1) {
+			System.out.println("이김");
+		} else if (player == 2 && npc == 3) {
+			System.out.println("짐");
+		
+		// 내가 바위
+//		} else if(player == 3 && npc == 3) {
+//			System.out.println("비김");
+		} else if (player == 3 && npc == 2) {
+			System.out.println("이김");
+		} else if (player == 3 && npc == 1) {
+			System.out.println("짐");
+		}
+		
+		System.out.println("1~45 : " + ((int)(Math.random()*45) + 1)); 
+		
+		int num2 = 2;
+		switch (num2) {
+			case 1:
+				System.out.println("1입니다");
+				break;
+			case 2:
+				System.out.println("2입니다");
+//				break;
+			default :
+				System.out.println("1과 2가 아닙니다");
+				break;
+		}
+		/*
+		 * switch에 전달한 값과 case의 값이 일치하면 해당 실행문을 실행한다
+
+			if, else if가 == 로만 이루어진 경우 switch를 사용할 수 있다
+			
+			즉 > ≥ < ≤ 등은 사용할 수 없다
+			
+			비교 가능한 타입 : char, byte, short, int, String
+			
+			사용 못하는 타입 : boolean, long, float, double
+			
+			case의 값은 모두 달라야 한다
+		 */
+		int month = 11;
+		switch (month) {
+			case 1 :
+				System.out.println("겨울");
+				break;
+			case 2 :
+				System.out.println("겨울");
+				break;
+			case 9 :
+//				System.out.println("가을");
+//				break;
+			case 10 :
+//				System.out.println("가을");
+//				break;
+			case 11 :
+				System.out.println("가을");
+				break;
+			case 12 :
+				System.out.println("겨울");
+				break;
+		}
+		
+		switch (month) {
+			case 1 :
+			case 2 :
+			case 12 :
+				System.out.println("겨울");
+				break;
+			case 9 :
+			case 10 :
+			case 11 :
+				System.out.println("가을");
+				break;
+		}
+		
+		// 통장 잔액이 10000원 있을때
+		// 출금액을 입력 받아서
+		// "잔액이 부족합니다"
+		// "얼마 출금했고 얼마 남았습니다"
+		// "정확히 입력해주세요"
+		int b = 10000;
+		int w = 7000;
+		if(w > b) {
+			System.out.println("잔액이 부족합니다");
+		} else if( w <= b && w >= 0) {
+//			System.out.println( w +"원 출금했고"+ (b-w) +"원 남았습니다");
+			
+//			b = b - w;
+			b -= w;
+			System.out.println( w +"원 출금했고"+ b +"원 남았습니다");
+		} else if( w < 0 ){
+			System.out.println("양수를 입력하세요");
+		} else {
+			System.out.println("오류 상황");
+		}
+		
+		w = 7000;
+		if(w > b) {
+			System.out.println("잔액이 부족합니다");
+		} else if( w <= b && w >= 0) {
+//			System.out.println( w +"원 출금했고"+ (b-w) +"원 남았습니다");
+			
+//			b = b - w;
+			b -= w;
+			System.out.println( w +"원 출금했고"+ b +"원 남았습니다");
+		} else if( w < 0 ){
+			System.out.println("양수를 입력하세요");
+		} else {
+			System.out.println("오류 상황");
+		}
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
