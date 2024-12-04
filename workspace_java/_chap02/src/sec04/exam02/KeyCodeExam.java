@@ -29,5 +29,5 @@ public class KeyCodeExam {
 		int input = scan.nextInt();
 		System.out.println("input : "+ input);
 		
-
+	}
 }
