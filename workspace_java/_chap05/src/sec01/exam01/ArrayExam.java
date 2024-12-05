@@ -1,4 +1,11 @@
+/*
+ * 
+ */
+
+
 package sec01.exam01;
+
+import java.util.Arrays;
 
 public class ArrayExam {
 
@@ -128,11 +135,57 @@ public class ArrayExam {
 		
 		
 		// [3,4,7,5,1,4,6]
-		/*
-		 * 문제1. 홀수의 개수 구하기
-		 * 문제2. 4보다 큰 수의 개수 구하기
-		 * 문제3. 최대값 구하기
-		 */
+		int[] arr = {3,4,7,5,1,4,6};
+		
+//		 문제1. 홀수의 개수 구하기
+		// 전략 : 
+		// 앞에서부터 하나씩 
+		// 홀수인지 검사
+		// 홀수일때 숫자를 센다
+		// 			``````````` >> 지금까지 센 숫자를 
+		//						   변수에 저장해놓겠다
+		int cnt = 0;
+		for(int i=0; i<arr.length; i++) {
+			if( arr[i] % 2 == 1 ) {
+				cnt++;
+			}
+		}
+		System.out.println("2. 홀수의 개수 : "+ cnt);
+		
+		// 문제2. 4보다 큰 수의 개수 구하기
+		// 전략 : 
+		// 앞에서부터 하나씩 
+		// 4보다 큰지 검사
+		// 4보다 클때 숫자를 센다
+		// 			``````````` >> 지금까지 센 숫자를 
+		//						   변수에 저장해놓겠다
+		cnt = 0;
+		for(int i=0; i<arr.length; i++) {
+			if( arr[i] > 4 ) {
+				cnt++;
+			}
+		}
+		System.out.println("2. 4보다 큰 개수 : "+ cnt);
+		
+		// 문제3. 최대값 구하기
+		// 전략
+		// 앞에서부터 하나씩
+		// // 첫번째 것을 기준으로
+		// int 최소값을 기준으로
+		// 다음것과 비교해서 큰것을
+		// 따로 저장해놓고
+		// 저장한 것으로 그 다음것과 비교하는걸 
+		// 끝까지 반복
+		int max = Integer.MIN_VALUE; // -2147483648
+		for(int i=0; i<arr.length; i++) {
+			
+			if(max < arr[i]) {
+				max = arr[i];
+			}
+			
+		}
+		System.out.println("최대값 : "+ max);
+		
 		
 		/* 
 		 * 문제4. 두번째 큰 수 구하기
@@ -154,6 +207,106 @@ public class ArrayExam {
 		 * 문제8. 로또 6개 배열에 저장
 		 * 		단, 중복 없이
 		 */
+		
+		
+		int[] class1 = new int[20];
+		int[] class2 = new int[20];
+		int[] class3 = new int[20];
+		int[] class4 = new int[20];
+		
+		int[][] 천안 = new int[4][20];
+		
+		System.out.println("천안 : "+ 천안);
+		System.out.println("천안[0] : "+ 천안[0]);
+		System.out.println("천안[0][0] : "+ 천안[0][0]);
+		
+		// 서로 다른 크기를 가지는 2차원 배열
+		int[][] test = { 
+							{1,2,3}, 
+							{1,2,3,4},
+							{78}
+						};
+		// 두번째 배열의 마지막 값 출력
+		System.out.println(test[1][3]);
+		
+		System.out.println("test.length : "+ test.length);
+		System.out.println("test[0].length : "+ test[0].length);
+		System.out.println("test[1].length : "+ test[1].length);
+		
+		System.out.println(test[2]);
+		
+		int[][] 수원 = new int[4][20];
+		int[][] 서울 = new int[4][20];
+		
+//		수원[0] = new int[]{1,2,3};
+		
+		int[][][] 휴먼 = new int[3][4][20];
+		
+		// 가상의 달력
+		// 근데 이제 12개월이고 모든 달은 30일까지만 있는..
+		// 한달은 1~30
+		// 모든 날짜 채워 넣기
+		// 따로 모든(또는 11월) 출력하기(나야... 달력...)
+		
+		// 1단계 : 1월만 만들어 보기
+		// 2단계 : 완성
+		
+		int day1 = 1;
+		int day2 = 2;
+		
+		int[] month1 = new int[30];
+		month1[0] = 1;
+		month1[1] = 2;
+		
+		for(int i=0; i<month1.length; i++) {
+			month1[i] = i+1;
+		}
+
+		for(int i=0; i<month1.length; i++) {
+			System.out.print(month1[i]+",");
+		}
+
+		
+		int[] month2 = new int[30];
+		for(int i=0; i<month2.length; i++) {
+			month2[i] = i+1;
+		}
+		
+		int[][] month = new int[12][30];
+		for(int i=0; i<month[0].length; i++) {
+			month[0][i] = i+1;
+		}
+		for(int i=0; i<month[1].length; i++) {
+			month[1][i] = i+1;
+		}
+		
+		for(int j=0; j<month.length; j++) {
+			for(int i=0; i<month[j].length; i++) {
+				month[j][i] = i+1;
+			}
+		}
+		
+		for(int j=0; j<month.length; j++) {
+			for(int i=0; i<month[j].length; i++) {
+				System.out.println("j:"+j+",i:"+i+",일:"+month[j][i]);
+			}
+		}
+		
+		
+		// 배열을 깊은복사
+		String[] name1 = {"김", "이", "박", "최"};
+		// name1와 정확히 동일한 name2를 만드세요
+		
+		String[] name2 = new String[ name1.length ];
+		name2[0] = name1[0];
+		
+		for(int i=0; i<name1.length; i++) {
+			name2[i] = name1[i];
+		}
+		
+		// System.arraycopy()
+//		Arrays.copyOf(name1, name2);
+		
 	}
 
 }
