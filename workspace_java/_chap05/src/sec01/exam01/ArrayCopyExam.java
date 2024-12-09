@@ -87,9 +87,49 @@ public class ArrayCopyExam {
 		}
 		
 		// 문제 5번
+		
+		int[][] array = {
+							{95,86},
+							{83,92,96},
+							{78,83,93,87,88},
+						};
 		// 합
+		int[][] array2 = array;
+		int[] a1 = array[0];
+		int a00 = array[0][0];
+		int a01 = array[0][1];
+		
+		int a = 10;
+		int b = a;
+		
+		int sum = 0;
+//		sum = array[0][0] + array[0][1] + array[1][0];
+//		sum = sum + array[0][0];
+//		sum = sum + array[0][1];
+		int count = 0;
+		int max = -1;
+		for(int i=0; i<array.length; i++) {
+			
+			for(int j=0; j<array[i].length; j++) {
+				sum = sum + array[i][j];
+				count++;
+				
+				if(max < array[i][j]) {
+					max = array[i][j];
+				}
+			}
+			
+		}
+		System.out.println("총 합 : "+ sum);
+		
+		
 		// 평균 : 합/개수
+		System.out.println("평균 : "+ ((double)sum/(double)count));
+		
+		
 		// 최대값
+		System.out.println("최대값 : "+ max);
+		
 	}
 
 }

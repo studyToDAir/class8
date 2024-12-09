@@ -5,7 +5,7 @@
 
 package sec01.exam01;
 
-import java.util.Arrays;
+import java.util.Scanner;
 
 public class ArrayExam {
 
@@ -187,28 +187,311 @@ public class ArrayExam {
 		System.out.println("최대값 : "+ max);
 		
 		
-		/* 
-		 * 문제4. 두번째 큰 수 구하기
-		 * 문제5. 배열을 하나씩 뒤(오른쪽)로 밀기
-		 * 		5-1 : 0으로 채우기
-		 * 		5-2 : 첫자리에 마지막 것 넣기
-		 * 문제6. 임시비밀번호 8자리 만들기
-		 * 		6-1 : 숫자로
-		 * 		6-2 : 소문자로
-		 * 		*6-3 : 숫자2개이상, 대/소문자 조합
-		 * 
-		 * 문제7. 예약
-		 * 		자리가 10개 있는 소극장 예약 시스템
-		 * 		자리 번호는 1~10번까지 번호의 자리가 있음
-		 * 		만약1 : 예약이 가능하면 "n번자리 예약 했습니다"
-		 * 		만약2 : 예약이 불가능하다면 "이미 예약 되어있습니다"
-		 * 		메뉴 : "1.예약, 2.모든좌석현황, 3.잔여좌석, 4. 종료"
-		 * 
-		 * 문제8. 로또 6개 배열에 저장
-		 * 		단, 중복 없이
-		 */
+		
+//		문제4. 두번째 큰 수 구하기
+		// 여전히 최대값을 구하는데
+		// 단, 진짜 최대값을 제외하고
+		int second = arr[0];
+		for(int i=0; i<arr.length; i++) {
+			if(arr[i] != max && second < arr[i]) {
+				second = arr[i];
+			}
+		}
+		System.out.println("두번째 최대값 : "+ second);
+
+		
+		int[] arr1 = {1,2,3,4,5};
+//		문제5. 배열을 하나씩 뒤(오른쪽)로 밀기
+//				5-1 : 0으로 채우기
+				// 전략1
+				// 맨 앞에것을 두번째에 놓을건데
+				// 두번째가 지워지니까
+				// 두번째를 임시 변수에 저장해두고
+				// 앞에것을 두번째에 적고
+				// 임시 변수를 세번째로 보낸다
+				// 위 내용을 끝까지 반복
+//		arr1[0] = 0;	// 원래 처음에 있던 값이 지워진다
+//		int temp = arr1[0];	// [1]  {1,2,3,4,5}
+//		arr1[0] = 0;		// [1]  {0,2,3,4,5}
+//		
+//		int temp2 = arr1[1];	// [1][2]  {0,2,3,4,5}
+//		arr1[1] = temp;			// [1][2]  {0,1,3,4,5}
+//		
+//		temp = arr1[2];			// [3][2]  {0,2,3,4,5}
+//		arr1[2] = temp2;		// [1][2]  {0,1,2,4,5}
+		// 임시변수를 두개나 써야해서 
+		// 못할건 아닌것으로 보이나 다른 방법 먼저 생각해보겠다
+		
+		// 맨 뒤에다 바로 앞의 값을 놓으면 어떨까?
+		// {1,2,3,4,5} >>> {1,2,3,4,4}
+		// {1,2,3,4,4} >>> {1,2,3,3,4}
+		
+		// 1단계
+//		for(int i=arr1.length-1; i >= 0; i--) {
+//			
+//			if(i == 0) {
+//				arr1[i] = 0;
+//			} else {
+//				arr1[i] = arr1[i-1];
+//			}
+//
+//		}
+//		// 출력
+//		for(int j=0; j<arr1.length; j++) {
+//			System.out.print(arr1[j]);
+//		}
+//		System.out.println();
+		
+		// 2단계부터는 반복문으로
+		for(int m=0; m<arr1.length; m++) {
+			for(int i=arr1.length-1; i >= 0; i--) {
+				
+				if(i == 0) {
+					arr1[i] = 0;
+				} else {
+					arr1[i] = arr1[i-1];
+				}
+
+			}
+			// 출력
+			for(int j=0; j<arr1.length; j++) {
+				System.out.print(arr1[j]);
+			}
+			System.out.println();
+		}
+		
+		System.out.println("---------------");
+//				5-2 : 첫자리에 마지막 것 넣기
+				// 전략
+				// 처음 값에 0을 넣는 대신에
+				// 마지막 값을 넣으면?
+		arr1 = new int[]{1,2,3,4,5};
+		for(int m=0; m<arr1.length*2; m++) {
+			int temp = arr1[arr1.length-1];
+			for(int i=arr1.length-1; i >= 0; i--) {
+				
+				if(i == 0) {
+					arr1[i] = temp;
+				} else {
+					arr1[i] = arr1[i-1];
+				}
+
+			}
+			// 출력
+			for(int j=0; j<arr1.length; j++) {
+				System.out.print(arr1[j]);
+			}
+			System.out.println();
+		}
+		
+		System.out.println("----------------");
+		String[] arr2 = new String[8];
+//		문제6. 임시비밀번호 8자리 만들기
+//				6-1 : 숫자로
+		for(int i=0; i<arr2.length; i++) {
+			arr2[i] = ""+(int)(Math.random()*10);
+		}
+		// 출력
+		for(int i=0; i<arr2.length; i++) {
+			System.out.print(arr2[i]);
+		}
+		System.out.println();
+//				6-2 : 소문자로
+				// 소문자?
+				// char에 소문자와 숫자의 관계
+				// 아스키코드 97 ~ 122까지가 a~z
+				// 전략2
+				// String[] lower = {"a", "b"...}
+				// index를 random으로..
+		
+		for(int i=0; i<arr2.length; i++) {
+			int start = 97;
+			int end = 122;
+			int random = ( (int)(Math.random()*(end - start + 1)) ) + start;
+			char temp = (char)random;
+			arr2[i] = ""+temp;
+		}
+		// 출력
+		for(int i=0; i<arr2.length; i++) {
+			System.out.print(arr2[i]);
+		}
+		System.out.println();
+//				*6-3 : 숫자2개이상, 대/소문자 조합
+				// 전략1
+				// 일단 숫자2개 먼저 뽑고나서 정해진 개수의 대/소문자
+				// 전략2
+				// 숫자/대/소문자를 random으로 정하기
+				// 숫자를 몇개 뽑았는지 세어 놓았다가
+				// 마지막에서 두번째에서 숫자의 필수자리수 부족하면 채우기
+		
+		int countNum = 0;
+		for(int i=0; i<arr2.length; i++) {
+			
+			// 0~2
+			// 0 : 숫자
+			// 1 : 소문자
+			// 2 : 대문자
+			int rand = ( (int)(Math.random()*(2 - 0 + 1)) ) + 0;
+//			System.out.println(rand);
+			if(i > arr2.length-2) {
+				if(countNum < 2) {
+					rand = 0;
+				}
+			}
+			
+			String str = "";
+			
+			if(rand == 0) {
+				// 숫자
+				str = ""+(int)(Math.random()*10);
+				countNum++;
+			} else if(rand == 1) {
+				// 소문자
+				int start = 97;
+				int end = 122;
+				int random = ( (int)(Math.random()*(end - start + 1)) ) + start;
+				char temp = (char)random;
+				str = ""+temp;
+			} else {
+				// 대문자
+				int start = 65;
+				int end = 90;
+				int random = ( (int)(Math.random()*(end - start + 1)) ) + start;
+				char temp = (char)random;
+				str = ""+temp;
+			}
+			arr2[i] = str;
+		}
+		// 출력
+		for(int i=0; i<arr2.length; i++) {
+			System.out.print(arr2[i]);
+		}
+		
+//		문제7. 예약
+//				자리가 10개 있는 소극장 예약 시스템
+//				자리 번호는 1~10번까지 번호의 자리가 있음
+//				만약1 : 예약이 가능하면 "n번자리 예약 했습니다"
+//				만약2 : 예약이 불가능하다면 "이미 예약 되어있습니다"
+//				메뉴 : "1.예약, 2.모든좌석현황, 3.잔여좌석, 4. 종료"
+		
+		// 전략
+		// 10개 배열에 0:예약가능, 1:예약불가로 관리
+		System.out.println("-------------");
+		int[] arr3 = new int[10];
+		Scanner scan = new Scanner(System.in);
+		int menu = -1;
+		do {
+			System.out.println("1.예약, 2.모든좌석현황, 3.잔여좌석, 4. 종료");
+			menu = scan.nextInt();
+			if(menu == 1) {
+				System.out.println("1~10까 중에 예약 자리를 입력하세요");
+				int rsv = scan.nextInt();
+				// 1~10까지 잘 넣었는지 방어
+				
+				if(arr3[rsv-1] == 1) {
+					System.out.println("예약 불가");
+				} else {
+					arr3[rsv-1] = 1;
+					System.out.println("자리번호 "+ rsv +" 예약 성공");
+				}
+			} else if(menu == 2) {
+				for(int i=0; i<arr3.length; i++) {
+					if(arr3[i] == 0) {
+						System.out.println((i+1)+ "번 : 예약가능");
+					} else {
+						System.out.println((i+1)+ "번 : 예약불가");
+					}
+				}
+			} else if(menu == 3) {
+				System.out.print("예약 가능 좌석 : ");
+				for(int i=0; i<arr3.length; i++) {
+					if(arr3[i] == 0) {
+						System.out.print((i+1)+ ",");
+					}
+				}
+				System.out.println();
+			} else {
+				// 방어 코딩 필요(메뉴가 1~4가 아닌 경우)
+				break;
+			}
+		} while(true);
+		
+//		문제8. 로또 6개 배열에 저장
+//				단, 중복 없이
+//		int[] lotto = new int[6];
+		
+//		lotto[0] = (int)(Math.random()*(45)) + 1;
+//		lotto[1] = (int)(Math.random()*(45)) + 1;
+//		if(lotto[0] == lotto[1]) {
+//			lotto[1] = (int)(Math.random()*(45)) + 1;
+//			
+//			if(lotto[0] == lotto[1]) {
+//				lotto[1] = (int)(Math.random()*(45)) + 1;
+//			}
+//		}
+//		do {
+//			lotto[1] = (int)(Math.random()*(45)) + 1;
+//		} while(lotto[0] != lotto[1]);
+//		
+//		do {
+//			lotto[2] = (int)(Math.random()*(45)) + 1;
+//		} while(lotto[0] != lotto[2] && lotto[1] != lotto[2]);
+//		
+//		// 2번 index 진행중
+//		int index = 2;
+////		boolean flag = false;
+////		for(int i=0; i<index; i++) {
+////			if(lotto[i] == lotto[index]) {
+////				flag = true;
+////				break;
+////			}
+////		}
+////		if(flag) {
+////			// 다시 뽑기
+////		}
+//		
+//		
+//		boolean flag = false;
+//		do {
+//			int j = 2;
+//			
+//			lotto[j] = (int)(Math.random()*(45)) + 1;
+//			
+//			flag = false;
+//			for(int i=0; i<j; i++) {
+//				if(lotto[i] == lotto[j]) {
+//					flag = true;
+//					break;
+//				}
+//			}
+//		} while(flag);
 		
 		
+		int[] lotto = new int[6];
+		boolean flag = false;
+		for(int j=0; j<lotto.length; j++) {
+			do {
+				lotto[j] = (int)(Math.random()*(45)) + 1;
+				flag = false;
+				for(int i=0; i<j; i++) {
+					if(lotto[i] == lotto[j]) {
+						flag = true;
+						System.out.println("중복발생");
+						break;
+					}
+				}
+			} while(flag);
+		}
+		System.out.println("--로또 번호--최민수--------------");
+		for(int i=0; i<lotto.length; i++) {
+			if(i != 0) {
+				System.out.print(","+ lotto[i]);
+			} else {
+				System.out.print(lotto[i]);
+			}
+		}
+		
+		/*
 		int[] class1 = new int[20];
 		int[] class2 = new int[20];
 		int[] class3 = new int[20];
@@ -306,7 +589,7 @@ public class ArrayExam {
 		
 		// System.arraycopy()
 //		Arrays.copyOf(name1, name2);
-		
+		*/
 	}
 
 }
