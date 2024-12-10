@@ -79,6 +79,7 @@ public class Calc {
 	void method(String classDept, int classNum) {
 		System.out.println(classDept +","+ classNum);
 	}
+	
 	void method() {
 		method("천안", 1);
 	}
