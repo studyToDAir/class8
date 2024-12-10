@@ -86,6 +86,12 @@ public class Kimbob {
 	 * @param String 메뉴명, int 가격
 	 * @return void
 	 */
+	void addMenu(String menuName, int menuPrice) {
+		this.menu.add(menuName);
+		this.price.add(menuPrice);
+		
+		System.out.println("메뉴 "+ menuName +"("+ menuPrice +")(을)를 추가했습니다");
+	}
 	
 	/**
 	 * 전체 메뉴와 가격 확인
@@ -94,4 +100,10 @@ public class Kimbob {
 	 * @param 
 	 * @return void
 	 */
+	void printMenu() {
+		System.out.println("-- 메뉴판");
+		for(int i=0; i<this.menu.size(); i++) {
+			System.out.println(this.menu.get(i) +" : "+ this.price.get(i));
+		}
+	}
 }
