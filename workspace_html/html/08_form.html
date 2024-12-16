@@ -7,10 +7,99 @@
 </head>
 <body>
     
-    text : <input type="text"><br>
-    password : <input type="password"><br>
+    <form method="get">
+        text(기본값) : <input type="text"><br>
+        text(value) : <input type="text" value="value"><br>
+        text(placeholder) : <input type="text" value="value" placeholder="placeholder"><br>
+        text(readonly) : <input type="text" value="value" placeholder="placeholder" readonly="readonly"><br>
+        text(disabled) : <input type="text" disabled="disabled" value="value"><br>
 
+        password : <input type="password" placeholder="placeholder"><br>
 
+        radio :
+        <input type="radio" name="gender" value="male" checked="checked">남자
+        <input type="radio" name="gender" value="female" >여자
+        <input type="radio" name="gender" value="" >비공개
+        <br>
+
+        checkbox :
+        <input type="checkbox" value="1">페페로니
+        <input type="checkbox" value="2" checked="checked" disabled="disabled">치즈
+        <input type="checkbox" value="3">올리브
+        <br>
+        file : <input type="file">
+        <br>
+        reset : <input type="reset" value="reset">
+        <br>
+        검색 : <input type="text" name="search"><br>
+        submit : <input type="submit" value="전송">
+
+        <br>
+        hidden : <input type="hidden" name="secret" value="1234">
+
+        <!--별로 그렇게 중요하지 않음-->
+        date : <input type="date" value="2024-12-03"><br>
+        color : <input type="color"><br>
+        number : <input type="number"><br>
+        range : <input 
+                    type="range" 
+                    name="ran" 
+                    min="10"
+                    max="100"
+                    step="10">
+        <br>
+        input button : <input type="button" name="btn" value="버튼">
+        <br>
+        <button type="button">button tag</button><br>
+
+        <a href="http://naver.com" target="_blank">
+            <button type="button">네이버 가기</button>
+        </a>
+        <br>
+        <textarea rows="10" cols="100" name="textarea">
+            1줄
+2줄
+        </textarea>
+        <br>
+
+        <select name="lunch" multiple="multiple" size="5">
+            <option value="1">한식</option>
+            <option value="2">양식</option>
+            <option value="3" selected="selected">중식</option>
+            <option value="4">분식</option>
+            <option value="5">분식1</option>
+            <option value="6">분식2</option>
+            <option value="7">분식3</option>
+            <option value="8">분식4</option>
+            <option value="9">분식5</option>
+        </select>
+
+        <br>
+        <input type="checkbox" id="chk"> <label for="chk">선택</label>
+        <br>
+        <label for="chk2">
+            <input type="checkbox" id="chk2"> 선택2
+        </label>
+
+        <fieldset>
+            <legend>제목</legend>
+            글씨들
+        </fieldset>
+    </form>
+
+    <!-- <form>
+        text : <input type="text"><br>
+        password : <input type="password"><br>
+    </form> -->
+
+    <form method="get" action="https://search.naver.com/search.naver">
+        네이버 검색 : <input type="text" name="query" placeholder="검색어를 입력하세요">
+    </form>
+    
+    <form method="get" action="https://www.google.com/search">
+        구글 검색 : <input type="text" name="q" placeholder="검색어를 입력하세요">
+        <input type="submit" value="구글 검색">
+    </form>
 
 
 </body>
