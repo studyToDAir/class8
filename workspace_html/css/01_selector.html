@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* css 주석 */
+
+        /* tag 선택자 */
+        h3 {
+            background: skyblue;
+        }
+        li {
+            color: blue;
+        }
+
+        /* id 선택자 */
+        #s1 {
+            color: white;
+            background: blue;
+            /* font-size: 20px; */
+        }
+
+        /* class 선택자 */
+        .c1 {
+            background: skyblue;
+        }
+        .bigText {
+            font-size: 30px;
+        }
+
+        #div1 {
+            background: yellow;
+        }
+        #div1:hover {
+            background: aqua;
+        }
+        #div1:active {
+            background: red;
+        }
+
+        .text1:focus {
+            background: yellow;
+        }
+
+        /* 누군가의 자식 요소 중에서 첫번째 */
+        li:first-child {
+            color: red;
+        }
+
+        ul:first-child {
+            font-size: 40px;
+        }
+        /* 실제 등장하는 요소 중 첫번째 */
+        ul:first-of-type {
+            text-decoration: underline;
+        }
+
+        tr:nth-child(2n-1){
+            background: grey;
+        }
+
+        h1:after {
+            content: "AFTER";
+            font-size: 10px;
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <h3>h3 자리</h3>
+    <ul>
+        <li class="c1 bigText">li 1</li>
+        <li id="s1" class="bigText">li 2</li>
+        <li>
+            <ul>
+                <li class="c1">li 1</li>
+                <li>li 2</li>
+                <li id="s1">li 3</li>
+            </ul>
+
+        </li>
+    </ul>
+
+    <div id="div1">
+        hover 연습
+    </div>
+    <input type="text" class="text1">
+
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>
+
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+            </ul>
+
+        </li>
+    </ul>
+
+    
+    <table border="1">
+        <tr> <td> 1111111111111111111111 </td> </tr>
+        <tr> <td> 2 </td> </tr>
+        <tr> <td> 3 </td> </tr>
+        <tr> <td> 4 </td> </tr>
+        <tr> <td> 5 </td> </tr>
+    </table>
+
+    <h1>before after</h1>
+
+</body>
+</html>
