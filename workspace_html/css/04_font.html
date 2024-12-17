@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 아래 font-family 적힌 값을 사용 가능 */
+        @font-face {
+            font-family: 'Ownglyph_ParkDaHyun';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2411-3@1.0/Ownglyph_ParkDaHyun.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        #p1 {
+            color: red;
+            /* text-decoration: underline; */
+            text-decoration: line-through;
+            font-family: 'Ownglyph_ParkDaHyun';
+        }
+        input[type=checkbox]:checked + span {
+            text-decoration: line-through;
+            color: grey;
+        }
+    </style>
+</head>
+<body>
+    <p id="p1">
+        글씨를 좀 적습니다.
+        <div>
+            자식 div
+        </div>
+    </p>
+    <div>
+        <input type="checkbox"> <span>복습</span><br>
+        <input type="checkbox"> <span>예습</span>
+    </div>
+
+</body>
+</html>
