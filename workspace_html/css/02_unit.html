@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #pixel .box1 {
+            font-size: 16px;
+
+            border: 1px solid red;
+            width: 100px;
+
+            background: #ff000050;
+        }
+        #pixel .box1 .box2 {
+            font-size: 30px;
+
+            border: 1px solid red;
+            width: 100px;
+
+            background: #0f0; /*축약형*/
+        }
+        #pixel .box1 .box2 .box3 {
+            font-size: 50px;
+
+            border: 1px solid red;
+            width: 100px;
+        }
+        
+        #percent .box1 {
+            font-size: 150%;
+
+            border: 1px solid red;
+            width: 50%;
+
+            background: rgba(255, 0, 0, 0.3);
+        }
+        #percent .box1 .box2 {
+            font-size: 150%;
+
+            border: 1px solid red;
+            width: 50%;
+            background: rgba(0, 0, 255, 0.3);
+        }
+        #percent .box1 .box2 .box3 {
+            font-size: 150%;
+
+            border: 1px solid red;
+            width: 50%;
+
+            background: rgb(0, 255, 0);
+        }
+
+        /* em은 %와 같음 대신 100% == 1em */
+        /* em은 글씨 크기 기준 */
+        #em .box1 {
+            font-size: 1.5em;
+        }
+        #em .box1 .box2 {
+            font-size: 1.5em;
+        }
+        /* rem : root em */
+        #em .box1 .box2 .box3 {
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+abc
+<div id="pixel">
+    <div class="box1">
+        abc 16
+        <div class="box2">
+            30
+            <div class="box3">
+                50
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<div id="percent">
+    <div class="box1">
+        150%
+        <div class="box2">
+            150%
+            <div class="box3">
+                150%
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<div id="em">
+    <div class="box1">
+        1.5
+        <div class="box2">
+            1.5
+            <div class="box3">
+                1.5
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

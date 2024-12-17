@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,9 +12,10 @@
         h3 {
             background: skyblue;
         }
+
         li {
-            color: blue;
-        }
+            color: blue /* !important */;
+        } 
 
         /* id 선택자 */
         #s1 {
@@ -26,6 +28,7 @@
         .c1 {
             background: skyblue;
         }
+
         .bigText {
             font-size: 30px;
         }
@@ -33,9 +36,11 @@
         #div1 {
             background: yellow;
         }
+
         #div1:hover {
             background: aqua;
         }
+
         #div1:active {
             background: red;
         }
@@ -52,26 +57,112 @@
         ul:first-child {
             font-size: 40px;
         }
+
         /* 실제 등장하는 요소 중 첫번째 */
         ul:first-of-type {
             text-decoration: underline;
         }
 
-        tr:nth-child(2n-1){
+        tr:nth-child(2n-1) {
             background: grey;
         }
 
         h1:after {
             content: "AFTER";
             font-size: 10px;
-            color:red;
+            color: red;
         }
+
+        body {
+            margin: 0;
+        }
+
+        /* * {
+            margin: 0;
+            padding: 0
+        } */
+
+        #tb1,
+        .td,
+        h6 {
+            border: 1px solid red;
+        }
+
+        /* > : 바로 아래 자식 요소 */
+        #ol1 > li {
+            color: black;
+        }
+
+        /* 띄어쓰기 : 자손들 모두 */
+        #ol1 li {
+            font-size: 20px;
+        }
+
+        /* 태그 중에서 href 속성이 있는 것 */
+        [href] {
+            color: red;
+        }
+        /* 속성과 값이 모두 일치하는 것 */
+        /* #s1은 [id=s1]의 줄임말 */
+        [id=s1] {
+            font-size: 40px;
+        }
+
+        /* [class="c1 bigText"] */
+        /* 값 중에 단어로 존재(공백으로 분리)하는 것 찾아서 선택 */
+        /* 아래 코드는 .클래스명 으로 줄일 수 있음 */
+        [class ~= c1]{
+            font-size: 40px;
+        }
+
+        /* 값으로 시작하는 모든 값 선택 */
+        [id ^= li_] {
+            font-size: 40px;
+        }
+        
+        /* 값으로 끝나는 모든 값 선택 */
+        [id $= _li]{
+            font-size: 40px;
+        }
+        
+        /* li 태그이면서 c1클래스를 가진것 */
+        li.c1 {
+            font-size: 40px;
+        }
+        input[type=password]{
+            font-size: 40px;
+        }
+        .bigText.c1 {
+            font-size: 40px;
+        }
+        /* 부정 선택자 */
+        /* a tag 이면서 href 속성의 값이 https로 시작하지 않는 것 */
+        a:not([href ^= https]){
+            font-size: 40px;
+        }
+        
+        ::selection{
+            background: green;
+        }
+
+        input[type=radio]:checked{
+            width: 50px;
+            height: 50px;
+        }
+
+        /* + : 바로 다음 형제 요소  */
+        input[type=radio]:checked + span{
+            color: blue;
+        }
+
     </style>
 </head>
+
 <body>
+    abc
     <h3>h3 자리</h3>
-    <ul>
-        <li class="c1 bigText">li 1</li>
+    <ul class="c1">
+        <li class="bigText c1">li 1</li>
         <li id="s1" class="bigText">li 2</li>
         <li>
             <ul>
@@ -103,16 +194,59 @@
         </li>
     </ul>
 
-    
+
     <table border="1">
-        <tr> <td> 1111111111111111111111 </td> </tr>
-        <tr> <td> 2 </td> </tr>
-        <tr> <td> 3 </td> </tr>
-        <tr> <td> 4 </td> </tr>
-        <tr> <td> 5 </td> </tr>
+        <tr>
+            <td> 1111111111111111111111 </td>
+        </tr>
+        <tr>
+            <td> 2 </td>
+        </tr>
+        <tr>
+            <td> 3 </td>
+        </tr>
+        <tr>
+            <td> 4 </td>
+        </tr>
+        <tr>
+            <td> 5 </td>
+        </tr>
     </table>
 
     <h1>before after</h1>
 
+    <table id="tb1">
+        <tr>
+            <td class="td">1</td>
+            <td class="td">
+                <h6>h6</h6>
+            </td>
+        </tr>
+    </table>
+
+    <ol id="ol1">
+        <li>1</li>
+        <li>
+            <ul>
+                <li id="li_1">2-1</li>
+                <li id="li_2">2-2</li>
+                <li id="li_3">2-3</li>
+            </ul>
+        </li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ol>
+
+    <a href="http://naver.com">네이버</a><br>
+    <a href="https://google.com">구글</a>
+
+    <hr>
+    <input type="radio" name="name">
+    <span>한식</span><br>
+    <input type="radio" name="name"><span>중식</span><br>
+    
+    <p style="height:1000px"> </p>
 </body>
+
 </html>
