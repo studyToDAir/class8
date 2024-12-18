@@ -4,28 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        /* 아래 font-family 적힌 값을 사용 가능 */
-        @font-face {
-            font-family: 'Ownglyph_ParkDaHyun';
-            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2411-3@1.0/Ownglyph_ParkDaHyun.woff2') format('woff2');
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        #p1 {
-            color: red;
-            /* text-decoration: underline; */
-            text-decoration: line-through;
-            font-family: 'Ownglyph_ParkDaHyun';
-        }
-        input[type=checkbox]:checked + span {
-            text-decoration: line-through;
-            color: grey;
-        }
-    </style>
+    <link rel="stylesheet" href="asset/font.css">
 </head>
 <body>
+
     <p id="p1">
         글씨를 좀 적습니다.
         <div>
@@ -36,6 +18,76 @@
         <input type="checkbox"> <span>복습</span><br>
         <input type="checkbox"> <span>예습</span>
     </div>
+
+    <div class="size">
+        <strong>font-size</strong> fake
+    </div>
+    <h1>font-size</h1>
+
+    <div class="style">
+        font-style
+    </div>
+    <em>font-style: italic</em>
+
+    <div class="fw-100">100</div>
+    <div class="fw-500">500</div>
+    <div class="fw-bold">bold</div>
+    <div class="fw-900">900</div>
+    <div class="fw-2000">2000</div>
+
+    <div class="align-right">
+        align-right
+    </div>
+    <div class="align-center">
+        align-center
+    </div>
+    <div class="align-justify" style="border: 1px solid red;">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae doloribus repudiandae minus, perferendis cumque quas nisi laudantium cum saepe esse iusto, ea maxime? Excepturi sint vel dolorum beatae sapiente nobis!
+    </div>
+
+    <a href="asdfd" class="align-right" style="border: 1px solid red;">a태그</a>
+    
+    <div  class="align-right" style="border: 1px solid red;">
+        <a href="asdfd" class="align-right" style="border: 1px solid red;">a태그</a>
+    </div>
+
+    <div class="spacing">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt repudiandae temporibus expedita sit iste iusto illum modi laborum eos quas, doloribus error perspiciatis sed laboriosam facere voluptatem labore tempora quae!
+    </div>
+
+    <div class="lh">
+        첫번째 줄<br>
+        두번째 줄
+    </div>
+
+    <div class="middle">
+        세로방향 중앙
+    </div>
+
+    <div class="nowrap" title="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora maiores libero voluptatum omnis expedita, officiis autem itaque culpa iure et. Molestias ipsum soluta delectus id voluptatibus quo dolorem deserunt perspiciatis!">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora maiores libero voluptatum omnis expedita, officiis autem itaque culpa iure et. Molestias ipsum soluta delectus id voluptatibus quo dolorem deserunt perspiciatis!
+    </div>
+
+    <div class="text word-wrap">
+        2;oihf222foiwjefwoiefhwo
+        a
+        wefwefwefehwoefhweofihwefoef 
+        wefwefwefehwoefhweofihwefoef123423r23r2
+        wefwefwefehwoefhweofihwefoef
+    </div>
+    <div class="text word-break">
+        2;oihf222foiwjefwoiefhwo
+        a
+        wefwefwefehwoefhweofihwefoef 
+        wefwefwefehwoefhweofihwefoef123423r23r2
+        wefwefwefehwoefhweofihwefoef
+    </div>
+
+
+
+
+
+    <p style="height:1000px"> </p>
 
 </body>
 </html>
