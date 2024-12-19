@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        #wrap {
+            background: url("https://html5up.net/uploads/demos/tessellate/images/header.jpg") no-repeat center;
+            background-size: cover;
+            height: 100vh;
+
+            /* 글씨색 변경 */
+            color: white;
+
+            /* 마진 중첩 해결법 1 */
+            /* border: 1px solid white; */
+            /* 마진 중첩 해결법 2 */
+            padding-top: 1px;
+            /* 마진 중첩 해결법 3 */
+            /* 안보이는 컨텐츠 만들기 */
+
+            text-align: center;
+
+            line-height: 100vh;
+        }
+
+        .inner {
+            border: 1px solid white;
+            /* 마진 중첩 해결법 2 */
+            margin-top: -1px;
+
+            width: 50%;
+            /* margin: 200px; */
+            margin: 0 auto;
+
+            display: inline-block;
+            /* inline-block적용 후 margin auto 무용지물 */
+
+            line-height: 1rem;
+
+            padding: 10px;
+
+            vertical-align: middle;
+        }
+
+        #up {
+            border-bottom: 1px dotted white;
+            cursor: pointer;
+        }
+
+        /* button {
+        background-color: #ffffff30;
+    } */
+        .btn {
+            border: 1px solid white;
+            border-radius: 5px;
+            background-color: #ffffff30;
+
+            height: 40px;
+            line-height: 40px;
+
+            width: 70%;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        #link {
+            margin: 10% 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="inner">
+            Welcome to Tessellate
+            <br>
+            <br>
+            <div id="link">
+                A free responsive site template by <span id="up">HTML5 UP</span>
+            </div>
+            <br>
+            <br>
+            <!-- <button type="button">Proceed to second phase</button> -->
+            <div class="btn">Proceed to second phase</div>
+        </div>
+    </div>
+</body>
+
+</html>
