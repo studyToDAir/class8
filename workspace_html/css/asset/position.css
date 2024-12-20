@@ -1,0 +1,132 @@
+body {
+    height: 2000px;
+}
+div {
+    border: 1px solid red;
+}
+
+.parent {
+    width: 100px;
+    margin: 20px;
+    background: green;
+    color: white;
+}
+.child {
+    background: rgba(0,0,255, 0.5);
+    width: 90px;
+}
+
+.relative {
+    /*
+    - 원래 위치를 기준으로 이동(top, right, bottom, left)
+    - 원래의 내 공간은 남아있음
+    */
+    position: relative;
+    /* top: 0;
+    left: 0; */
+    top: 10px;
+    left: -20px;
+    /* top: 50%;
+    left: 50%; */
+}
+
+.absolute {
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* top: 50%;
+    left: 50%; */
+    /* top: 250px;
+    left: 50px; */
+    /* left: -15000px; */
+}
+
+.absolute-bottom {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+.fixed {
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+
+    position: fixed;
+    right: 5px;
+    bottom: 5px;
+}
+
+.sticky {
+    position: sticky;
+    top: 20px;
+}
+
+.z1 {
+    background-color: hotpink;
+
+    top: 20px;
+    left: 20px;
+
+    /* z-index: 1; */
+}
+.z2 {
+    background-color: brown;
+
+    top: -10px;
+    left: -20px;
+
+    /* z-index: 2; */
+}
+.z3 {
+    background-color: #000;
+    color: #fff;
+
+    top: -20px;
+    left: 50px;
+
+    /* z-index: 9999; */
+}
+
+.relative:hover {
+    z-index: 99;
+}
+
+ul.main {
+    background-color: yellow;
+}
+ul.main:hover + ul.sub {
+    display: block;
+}
+ul.main + ul.sub:hover {
+    display: block;
+}
+
+ul.main + ul.sub {
+    background-color: aqua;
+
+    position: relative;
+    top: -19px;
+
+    display: none;
+}
+
+ul.main + ul.sub li:hover  {
+    background-color: pink;
+}
+
+.p1 {
+    width: 200px;
+    height: 150px; /* 반 75px */
+    position: relative;
+}
+.p1 .c1 {
+    width: 70px;
+    height: 50px;   /*반 25px */
+
+    position: absolute;
+    /* top: 50px; */
+    top: calc(150px/2 - 50px/2);
+    left: calc(50% - (70px/2));
+}

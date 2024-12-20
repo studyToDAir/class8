@@ -42,3 +42,25 @@
     /* inline, inline-block에만 적용 됨 */
     vertical-align: top;
 }
+
+.hide {
+    display: none;
+}
+
+.table {
+    display: table;
+}
+.table .td {
+    display: table-cell;
+    
+    border: 1px solid red;
+    width: 100px;
+    height: 100px;
+
+    vertical-align: middle;
+    text-align: center;
+}
+.fake_div {
+    display: inline;
+    border: 1px solid red;
+}

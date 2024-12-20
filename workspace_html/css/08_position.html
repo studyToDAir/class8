@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="asset/position.css">
+</head>
+<body id="top">
+
+    <div class="parent">
+        <div>
+            위 div
+        </div>
+        <div class="child">
+            자식<br>
+            다음줄
+        </div>
+        <div>
+            아래 div
+        </div>
+    </div>
+
+    <!-- 나중에 실습한 내용인데 여기에 둠 -->
+    <div class="sticky">
+        스티키 : 메뉴1 메뉴2
+    </div>
+
+    <div class="parent">
+        <div>
+            위 div
+        </div>
+        <div class="child relative">
+            자식<br>
+            다음줄
+        </div>
+        <div>
+            아래 div
+        </div>
+    </div>
+
+    <div class="parent">
+        <div>
+            위 div
+        </div>
+        <div class="child absolute">
+            자식<br>
+            다음줄
+        </div>
+        <div>
+            아래 div
+        </div>
+    </div>
+
+    <div class="parent relative">
+        <div>
+            위 div
+        </div>
+        <div class="child absolute">
+            자식<br>
+            다음줄
+        </div>
+        <div>
+            아래 div
+        </div>
+    </div>
+
+    <div class="parent">
+        <div>
+            위 div
+        </div>
+        <div class="child absolute-bottom">
+            자식<br>
+            다음줄
+        </div>
+        <div>
+            아래 div
+        </div>
+    </div>
+
+    <div class="fixed">
+        <a href="#top">맨 위로</a>
+    </div>
+
+    <div class="parent sub">
+        <div class="relative z1">1번</div>
+        <div class="relative z2">2번</div>
+        <div class="relative z3">3번</div>
+    </div>
+
+    <!--
+        메인메뉴
+            항상 보이는 상태
+            마우스 올렸을때 서브메뉴들이 보이게
+        서브메뉴들
+            메인메뉴에 살짝 겹친 상태로 표시
+            안보이는 상태로 시작
+            마우스 올렸을때 배경색 변경
+    -->
+    <ul class="main">
+        <li>
+            메인메뉴
+            
+        </li>
+    </ul>
+    <ul class="sub">
+        <li>서브메뉴1</li>
+        <li>서브메뉴1</li>
+        <li>서브메뉴1</li>
+    </ul>
+
+    <div class="p1">
+        부모박스
+        <div class="c1">
+            자식박스
+        </div>
+    </div>
+
+</body>
+</html>
