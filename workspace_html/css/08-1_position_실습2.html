@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            border: 1px solid red;
+        }
+        body {
+            margin: 0;
+        }
+        .wrap {
+            box-sizing: border-box;
+            height: 100vh;
+        }
+        .wrap .l1 {
+            height: 100%;
+            width: 60%;
+
+            position: absolute;
+            right: 0;
+            background-color: purple;
+        }
+        .wrap .l2 {
+            height: 250px;
+            width: 250px;
+
+            position: absolute;
+            top: 10%;
+            left: 10%;
+
+            background-color: pink;
+
+            z-index: 2;
+        }
+        .wrap .l3 {
+            height: 200px;
+            width: 200px;
+
+            position: absolute;
+            top: 58px;
+            left: 50%;
+
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="l1">자주색</div>
+        <div class="l2">어머</div>
+        <div class="l3">
+            about us
+            Fashion Trends 2021
+            Images from 
+        </div>
+    </div>
+</body>
+</html>
