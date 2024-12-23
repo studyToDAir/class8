@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul {
+            border: 1px solid red;
+            list-style: none;
+            padding-left: 0;
+        }
+        ul li {
+            border: 1px solid red;
+            width: 100px;
+            display: inline-block;
+            text-align: center;
+        }
+        span {
+            display: none;
+        }
+
+        /* @media screen and (min-width: 600px){ */
+        /* @media screen and (max-width: 1000px){
+            ul li {
+                width: 80%;
+                display: inline-block;
+            }
+        } */
+        @media screen and (max-width: 600px){
+            span {
+                display: inline;
+            }
+            span:hover + ul {
+                display: block;
+            }
+            ul {
+                display: none;
+            }
+            ul li {
+                width: 100%;
+                display: block;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    
+    <nav>
+        <span>메뉴열기</span>
+        <ul>
+            <li>메일</li>
+            <li>카페</li>
+            <li>블로그</li>
+            <li>웹툰</li>
+        </ul>
+    </nav>
+
+</body>
+</html>

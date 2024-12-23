@@ -4,8 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        div {
+            border: 1px solid red;
+        }
+        .wrap {
+            height: 100vh;
+        }
+        .wrap .left,
+        .wrap .right {
+            display: inline-block;
+            width: 45%;
+            margin: 0 2%;
+            min-width: 500px;
+        }
+        .wrap img {
+            width: 100%;
+        }
+        .wrap .img_right {
+            width: 50%;
+        }
+        .wrap .left {
+            text-align: right;
+        }
+        .wrap #band {
+            width: 200px;
+            height: 100%;
+            background-color: #e4d2c0;
+            
+            position: absolute;
+            margin: 0 auto; /*absolute 하면 inline-block */
+
+            z-index: -1;
+
+            left: calc(50% - 100px);
+        }
+    </style>
 </head>
 <body>
     
+    <div class="wrap">
+
+        <div id="band"></div>
+
+        <div class="left">
+            <div>
+                <img src="https://images01.nicepage.com/c461c07a441a5d220e8feb1a/4583c5e5778759d5bf354095/dfggdf-min.jpg">
+            </div>
+            <div>
+                <img class="img_right" src="https://images01.nicepage.com/c461c07a441a5d220e8feb1a/ea6de3a355c35c3fb5e2e8fb/gfgg.jpg">
+            </div>
+        </div>
+        <div class="right">
+            <div>
+                <img class="img_right" src="https://images01.nicepage.com/c461c07a441a5d220e8feb1a/ea6de3a355c35c3fb5e2e8fb/gfgg.jpg">
+            </div>
+            <div>
+                <img src="https://images01.nicepage.com/c461c07a441a5d220e8feb1a/4583c5e5778759d5bf354095/dfggdf-min.jpg">
+            </div>
+        </div>
+    </div>
+
+
 </body>
 </html>
