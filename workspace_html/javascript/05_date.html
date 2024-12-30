@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 브라우저가 설치된 pc의 시간
+        let now = new Date();
+        console.log(now);    // Mon Dec 30 2024 10:26:06 GMT+0900 (한국 표준시)
+
+        // 년도
+        let y = now.getFullYear();
+        console.log("년 :", y);
+
+        // 월(0~11)
+        let M = now.getMonth();
+        console.log("월 :", M+1);
+
+        // 일
+        let d = now.getDate();
+        console.log("일 :", d);
+
+        // 요일(일0~토6)
+        let w = now.getDay();
+        console.log("요일 :", w);
+
+        // 시간(24시간)
+        let h = now.getHours();
+        console.log("시 :", h);
+
+        // 분
+        let m = now.getMinutes();
+        console.log("분 :", m);
+
+        // 초
+        let s = now.getSeconds();
+        console.log("초 :", s);
+
+        let iso = now.toISOString();
+        console.log( iso ); //2024-12-30T01:36:17.084Z
+        let aIso = iso.split("T");
+        console.log(aIso)
+        console.log(aIso[1].split(".")[0])
+
+        // 1970년 1월 1일 자정부터 지난 시간(ms)
+        let timestamp = now.getTime();
+        console.log(timestamp); // 1735523005547
+        
+        let before = new Date(1735523228053);
+        console.log( before.getHours() );
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

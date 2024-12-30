@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 한줄 주석
+        /* 범위 
+        주석 */
+        console.log("hello world");
+
+        var a = 10;
+        console.log("a : "+ a);
+
+        b = 11;
+        console.log("b : ", b);
+        
+        let c = 12;
+        console.log(c);
+
+        const d = 13;
+        console.error(d);
+
+        let e;
+        console.log(e);
+        console.log(""+e);
+        
+        // console.log(f); // error 발생 시 js 중단
+        // console.log("hello");
+
+         // 재선언이 가능하다
+        var a = 20;
+        b = 21;
+        console.log(a, b);
+
+        // let c = 22;
+        // const d = 23;
+        c = 22;
+        console.log(c);
+        
+        // d = 23;
+        
+        c = "문자";
+        c = "문\"자";
+        c = '문자';
+        c = '<a href="naver.com">';
+        c = '엔\n터';
+        console.log(c);
+
+        // let g:number = "문"
+        
+        console.log(typeof c);
+        console.log(typeof d, d);
+
+        c = "13";
+        console.log( c == d );  // 값이 같은가?
+        console.log( c != d );  // 값이 같은가?
+        console.log( c === d ); // 값과 타입까지 같은가?
+        console.log( c !== d ); // 값과 타입까지 같은가?
+
+        c += 1;
+        console.log(c);
+
+        let a1, 
+            a2, 
+            a3;
+        if(a1 === undefined){
+            console.log("a1의 값을 넣으세요", typeof a1)
+        }
+        if(typeof a1 === "undefined"){
+            console.log("a1의 값을 넣으세요");
+        }
+        
+        const g = "12.34";
+        console.log(1, g+5);
+        console.log(2, Number(g)+5);
+        console.log(2, parseInt(g)+5);
+
+        const h = "문자";
+        console.log(h * 5); // NaN : Not a Number
+        console.log( isNaN(h) );    // NaN인가?
+        
+        console.log( 5 / 0 );
+        console.log( isFinite(5/0) );
+
+        console.log("이전")
+        alert("alert\n글씨");
+        console.log("이후")
+        
+        const result1 = confirm("진짜? 할꺼임?");
+        console.log(result1)
+        const result2 = prompt("메세지\n다음줄");   // 취소 시 null
+        console.log(result2)
+
+        console.log("입력한 글씨는 "+ result2 +"입니다")
+        console.log(`입력한 글씨는 ${result2}입니다`);
+    </script>
+</head>
+<body id="top" class='body1'>
+    
+</body>
+</html>
