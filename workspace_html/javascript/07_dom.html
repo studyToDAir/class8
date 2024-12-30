@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="title">DOM 연습</h1>
+
+    <div id="view">첫번째 #view</div>
+    <div id="view">두번째 #view</div>
+
+    <div class="div2">첫번째 .div</div>
+    <div class="div2">두번째 .div</div>
+
+    <!-- #parent .div2 -->
+    <div id="parent">
+        <div class="child div2">안쪽 div</div>
+        <div class="child">안쪽 div</div>
+    </div>
+
+    <script>
+        // document는 html 문서 전체를 뜻함
+        // getElementById : 속성 id의 값을 이용해 dom을 가져온다
+        let title = document.getElementById("title");
+        console.log(title);
+        console.log(""+title);
+        // alert(title)
+
+        // 요소가 없는 경우 null
+        let test = document.getElementById("test");
+        console.log(test);
+
+        // id가 여러개인 경우 첫번째 DOM 하나만 가져온다
+        let view = document.getElementById("view");
+        console.log(view);
+
+
+        // tag명으로 DOM 찾기
+        // 일치하는 모든 것을 배열로 돌려준다
+        let divs = document.getElementsByTagName("div");
+        console.log(divs);
+
+        // 하나만 있어도 한개짜리 배열이 나온다
+        let h1 = document.getElementsByTagName("h1");
+        console.log(h1);
+
+        // 없어도 null이 아닌 비어있는 배열(length == 0)
+        let human = document.getElementsByTagName("human");
+        console.log(human);
+
+
+        let div2 = document.getElementsByClassName("div2")
+        console.log(div2);
+        console.log(div2[0]);
+
+
+        // document : 문서 전체
+        let parent = document.getElementById("parent");
+        console.log(parent)
+        // 특정 DOM 안에서 찾기
+        let child_div2 = parent.getElementsByClassName("div2");
+        // let child_div2 = document.getElementById("parent").getElementsByClassName("div2");
+        console.log(child_div2[0])
+
+
+        // querySelector : CSS 선택자를 사용할 수 있음
+        let qs1 = document.querySelector("#parent .div2");
+        console.log(qs1)
+    </script>
+</body>
+</html>

@@ -179,6 +179,29 @@
         console.log('str2.indexOf("점심") :', str2.indexOf("점심"))
         console.log('str2.indexOf("저녁") :', str2.indexOf("저녁"))
 
+        // 시작index부터 끝index 바로 앞
+        // 끝index가 없으면 끝까지
+        console.log('str2.slice(0, 5)', str2.slice(0, 5))
+
+        // 첫번째 전달인자를 두번째로 바꿔줌
+        // 처음 만나는 것 하나만 바꿔줌
+        let str3 = str2.replace("점심", "저녁");
+        console.log("str2 : ", str2);
+        console.log("str3 : ", str3);
+        
+        // 정규표현식
+        str3 = str2.replace(/점심/g, "저녁");
+        console.log("str3 : ", str3);
+
+        // 시작index부터 끝index 바로 앞
+        str3 = str2.substring(1, 6);
+        console.log("str2 : ", str2);
+        console.log("str3 : ", str3);
+
+        // 시작index부터 count만큼
+        str3 = str2.substr(3, 6);
+        console.log("str2 : ", str2);
+        console.log("str3 : ", str3);
     </script>
 </head>
 <body>
