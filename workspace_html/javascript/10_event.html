@@ -5,9 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
  
+    <style>
+        body {
+            height: 2000px;
+        }
+        #console {
+            position: sticky;
+            top: 0;
+        }
+    </style>
     <script>
-
-        // 
         window.addEventListener("load", init);
 
         // window.onload = function(){
@@ -15,20 +22,89 @@
         // }
 
         function init(){
-            const btn1 = document.querySelector("#btn1");
-            console.log('btn1 :', btn1);
+            const btn2 = document.querySelector("#btn2");
+            console.log('btn2 :', btn2);
+            
+            btn2.onclick = function(){
+                document.querySelector("#console").innerHTML += "<br>버튼2 클릭";
+            }
+            // onclick : 변수이므로 마지막 값만 저장된다
+            btn2.onclick = function(){
+                document.querySelector("#console").innerHTML += "<br>버튼2-1 클릭";
+            }
+
+            const btn3 = document.querySelector("#btn3");
+            btn3.addEventListener("click", function(){
+                 document.querySelector("#console").innerHTML += "<br>버튼3 클릭"
+                 document.documentElement.scrollTop = 1000;
+            })
+            // addEventListener : 함수를 추가하는 것이므로 두개 이상 bind 할 수 있다
+            btn3.addEventListener("click", function(){
+                 document.querySelector("#console").innerHTML += "<br>버튼3-1 클릭"
+            })
+
+            const btn4 = document.querySelector("#btn4");
+            btn4.addEventListener("click", btn1click);
+            btn4.addEventListener("click", btn4click);
+            // removeEventListener : 해당 이벤트 콜백 제거
+            // 단, 익명함수는 불가능
+            // 마치 함수마다 고유한 id같은게 있는데
+            // 익명함수는 선언될때마다 VM이라는 공간에
+            // 신규 id를 발급받기 때문에 지울때 사용하지 못함
+            btn4.removeEventListener("click", btn4click);
+
+            window.addEventListener("scroll", function(){
+                const scrollTop = 
+                        document.documentElement.scrollTop;
+                document.querySelector("#console").innerHTML = scrollTop;
+            })
+
+            document.querySelector("#login")
+                    .addEventListener("click", function(){
+                        const id = document.querySelector("#id").value
+                        const pw = document.querySelector("#pw").value
+
+                        document.querySelector("#console").innerHTML = id +","+ pw
+                    })
 
         }
 
         function btn1click(){
             console.log("버튼1 클릭")
+
+            document.querySelector("#console").innerHTML += "<br>버튼1 클릭";
         }
+
+        function btn4click(){
+            document.querySelector("#console").innerHTML += "<br>버튼4 클릭";
+        }
+        // const btn4click = function(){
+        //     document.querySelector("#console").innerHTML += "<br>버튼4 클릭";
+        // }
         
+        // 로그인 버튼 클릭 시
+        // #console에 아이디, 비밀번호 출력하기
+
+
+
     </script>
 </head>
 <!-- <body onload="javascript:init()">  -->
 <body>
-    <button type="button" id="btn1" onclick="btn1click()">버튼1</button>
+    <div id="console"></div>
+
+    <button type="button" id="btn1" onclick="btn1click();alert(1);">버튼1</button><br>
+    <button type="button" id="btn2">버튼2</button><br>
+    <button type="button" id="btn3">버튼3</button><br>
+    <button type="button" id="btn4">버튼4</button><br>
+
+    <div>
+        아이디 : <input type="text" id="id"><br>
+        비밀번호 : <input type="password" id="pw"><br>
+        <br>
+        <input type="button" id="login" value="로그인">
+    </div>
+
 
 </body>
 </html>

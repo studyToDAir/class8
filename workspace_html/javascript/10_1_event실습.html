@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.addEventListener("load", function(){
+            // 조건문
+            // 선택한 것에 따라 다르게 #view에 출력
+            // 다시말해
+            // 1. 확인버튼#btn1을 누르면
+            const btn1 = document.querySelector("#btn1");
+
+            btn1.addEventListener("click", function(){
+                // 2. 선택된 값을 읽어서
+                //      - select의 선택된 option의 value을 읽어서
+                let sel = document.querySelector("#sel");
+                console.log(sel.value);
+                let sel_value = sel.value;
+
+                // 3. 값에 따라
+                // 4. 다르게 #view에 출력한다
+                const view = document.querySelector("#view");
+                if( sel_value == "1" ){
+                    console.log("1번 선택")
+                    view.innerHTML = "게임 선택";
+                } else if( sel_value == "2" ){
+                    console.log("2번 선택")
+                    view.innerHTML = "외식 선택";
+                } else if( sel_value == "3" ){
+                    console.log("3번 선택")
+                    view.innerHTML = "휴식 선택";
+                }
+
+            })
+
+
+
+            // 조건문 2
+            // 로그인버튼을 눌렀을때
+            // 아이디 또는 비밀번호에 쓴 글이 없다면
+            // 비번 아래에 로그인버튼 위에 
+            // 빨간색으로 "아이디는 필수입니다", "비번은 필수입니다" 출력
+            
+        })
+    </script>
+</head>
+<body>
+    <div id="view"></div>
+
+    <!-- 조건문
+        select로 오늘 저녁에 뭐할지 두개 이상 표시
+    -->
+    <select id="sel">
+        <option value="1">게임하기</option>
+        <option value="2">외식하기</option>
+        <option value="3">휴식</option>
+    </select>
+    <br>
+    <button type="button" id="btn1">확인</button>
+    <hr>
+
+    <!-- 조건문2
+        로그인 ui
+    -->
+
+</body>
+</html>
