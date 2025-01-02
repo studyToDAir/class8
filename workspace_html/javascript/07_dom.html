@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .red {
+            color: red;
+        }
+    </style>
 </head>
 <body>
     <h1 id="title">DOM 연습</h1>
@@ -19,6 +24,8 @@
         <div class="child div2">안쪽 div</div>
         <div class="child">안쪽 div</div>
     </div>
+
+    <img data-a="a" src="data:image/jpeg;base64,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" style="width:100px">
 
     <script>
         // document는 html 문서 전체를 뜻함
@@ -67,7 +74,111 @@
 
         // querySelector : CSS 선택자를 사용할 수 있음
         let qs1 = document.querySelector("#parent .div2");
-        console.log(qs1)
+        console.log(qs1);
+        
+        console.log('---------------')
+        // - getElementById처럼 맨 처음 나오는 하나의 DOM만 돌려 줌
+        let qs2 = document.querySelector(".div2");
+        console.log(qs2);
+
+        let qs3 = document.querySelector("#human");
+        console.log(qs3);
+
+        let qsa1 = document.querySelectorAll(".div2");
+        console.log(qsa1);
+
+        let qsa2 = document.querySelectorAll(".div2asdfd");
+        console.log(qsa2);
+
+        let qsa3 = document.querySelectorAll("#view");
+        console.log(qsa3);
+
+        let child1 = document.querySelector("#parent .div2");
+        console.log(child1)
+        // parentNode : 부모 DOM으로 이동
+        let parent1 = child1.parentNode;
+        console.log(parent1)
+
+        // classList : class를 배열 형식으로 돌려줌
+        console.log(child1.classList)
+
+        // classList.add() : class 추가
+        child1.classList.add("red");
+        // 클래스는 중복해서 추가되지 않는다
+        child1.classList.add("red");
+
+        // 해당 클래스 삭제
+        child1.classList.remove("red");
+        child1.classList.remove("red2");
+
+        // toggle : 있으면 remove, 없으면 add
+        child1.classList.toggle("red");
+        child1.classList.toggle("red");
+        // child1.classList.toggle("red");
+
+        let isRed = child1.classList.contains("red");
+        console.log(isRed);
+
+        // TODO : toggle 구현 (단, toggle 쓰지 말고)
+        //      red class가 있으면 red 삭제
+        //      red class가 없으면 red 추가
+        if( isRed /*== true*/ ){
+            child1.classList.remove("red");
+        } else {
+            child1.classList.add("red");
+        }
+
+        // className : 모든 class를 문자로 돌려줌
+        console.log( child1.className );
+        // 값을 지정하는 class의 값을 덮어쓰기
+        child1.className = "blue";
+
+        // css 선택자 중에 속성으로 선택하는걸로 querySelector 사용해보기
+        document.querySelector("[id=title]");
+        document.querySelector("#title");
+        document.querySelector("[class='div2 red']");
+        document.querySelector("[class='red div2']");
+        document.querySelector("[class ~= red]");
+        document.querySelector(".red");
+        // contains 구현해보기
+        function contains(element, name){
+            for(let i=0; i<element.classList.length; i++){
+                if(element.classList[i] == name){
+                    return true;
+                }
+            }
+            return false;
+        }
+        console.log( 'contains 결과', contains(child1, 'blue') );
+
+        let img = document.getElementsByTagName("img");
+        console.log(img);
+        console.log(img[0]);
+        console.log(img[0].classList);
+
+        // 속성명이 있는지 검사
+        let isSrc = img[0].hasAttribute("src");
+        console.log(isSrc)
+        isSrc = img[0].hasAttribute("readonly");
+        console.log(isSrc)
+
+        // 속성값 가져오기
+        let src = img[0].getAttribute("src");
+        console.log(src)
+        // 속성이 없으면 null
+        src = img[0].getAttribute("readonly");
+        console.log(src)
+
+        // setAttribute(속성명, 속성값) : 
+        //          속성이 없으면 속성을 만들고
+        //          속성이 있으면 값 덮어쓰기
+        img[0].setAttribute("data-human", "1강의실");
+        img[0].setAttribute("data-human", "10강의실");
+        img[0].setAttribute("src", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRu8XUVhiBrxQqYQsv6hlQ6VaC7HagjQLFOfA&s");
+
+        // 속성 지우기
+        img[0].removeAttribute("data-human");
+        
     </script>
 </body>
 </html>

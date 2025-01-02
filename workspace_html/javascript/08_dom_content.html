@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1 {
+            color: red;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="msg">
+        <span>원래 </span>      있던 글씨
+    </div>
+
+    <div id="test">
+
+        <!-- <div>
+            부모 <span>span안쪽</span>
+            <div>안쪽 div</div>
+        </div> -->
+
+    </div>
+   
+    <h1 id="h1">style 테스트</h1>
+
+    <hr>
+    text : <input type="text" id="id" value="미리적은글"><br>
+    date : <input type="date" id="date"><br>
+    radio : 
+    <input type="radio" name="ai" value="1" checked="checked">GPT
+    <input type="radio" name="ai" value="2">Gemini
+    <input type="radio" name="ai" value="3">Bing
+    <br>
+
+    <select id="select">
+        <option value="1">첫번째</option>
+        <option value="2">두번째</option>
+    </select>
+    <br>
+
+    <textarea id="textarea" cols="50" rows="10"></textarea>
+
+
+
+    <div style="height:1000px;"></div>
+    <script>
+        let msg = document.querySelector("#msg");
+        // textContent : 컨텐츠 영역의 소스 중 text만 그대로 가져온다
+        console.log('textContent', msg.textContent);
+
+        // innerText : 브라우저에 보이는 그대로
+        //             브라우저가 계산을 끝내고 실제 표시하는 글씨
+        console.log('innerText', msg.innerText);
+
+        // innerHTML : 컨텐츠 영역의 소스를 가져옴
+        console.log('innerHTML', msg.innerHTML);
+
+        // 이 둘에 값을 넣으면 컨텐츠를 변경해 줌
+        // 그런데 tag도 글씨로 인식한다
+        msg.textContent = "<h1>제목</h1>    a  b     c";
+        msg.innerText = "<h1>제목1</h1>    a1  b1     c1";
+        
+        // tag는 tag로 인식한다
+        msg.innerHTML = "<h1>제목1</h1>    a1  b1     c1";
+
+        // msg.innerHTML = "<script>alert(1)"+"<"+"/script>";
+        
+        msg.innerHTML = msg.innerHTML + "<h2>제목2</h2>";
+        msg.innerHTML += "<h2>제목2</h2>";
+
+        // <div id='menu' style='color: red;'>
+        //      메뉴
+        // </div>
+        // createElement : DOM 요소 생성
+        let div = document.createElement("div"); // <div></div>
+        div.setAttribute("id", "menu");
+        div.setAttribute("style", "color: red;");
+        div.classList.add("primary");
+        div.textContent = '메뉴';
+
+        // appendChild : 마지막 자식요소로 들어간다. DOM만 넣을 수 있다
+        // msg.appendChild(div);
+
+        // append : 마지막 자식요소로 들어간다. DOM도 넣을 수 있고 text도 넣을 수 있다
+        msg.append(div);
+        msg.append("그냥 글씨");
+        msg.append("<strong>그냥 글씨</strong>");   // 글씨로 들어간다
+
+        // 첫번째 자식 요소로 들어간다
+        msg.prepend(div);
+
+        // 다음 형제 요소로 삽입
+        msg.after(div);
+        // 이전 형제 요소로 삽입
+        msg.before(div);
+
+        let html = `<div>
+                        부모 <span>span안쪽</span>
+                        <div>안쪽 div</div>
+                    </div>`
+
+        let html2 = "<div>"
+        html2 += "      부모 <span>span안쪽</span>"
+        html2 += "      <div>안쪽 div</div>"
+        html2 += "</div>"
+
+        document.querySelector("#test").innerHTML = html;
+
+        // html 글씨를 html요소로 만들어줌
+        // <html><head><body>도 같이 만들어서 body 안에 넣어 준다
+        let dom = new DOMParser().parseFromString(html, "text/html");
+        console.log(dom)
+        console.log(dom.documentElement)    // 이걸로 append 할 수 있다
+        // let div2 = dom.documentElement.querySelector("body > div")
+        // div.append(div2);
+        div.appendChild(dom.documentElement)
+
+        let h1 = document.querySelector("#h1")
+        console.log('h1.style.color', h1.style.color);
+        
+        h1.style.color = 'blue';
+        console.log('h1.style.color', h1.style.color);
+
+        // css에서 -로 연결된(캐밥케이스) 프로퍼티는 카멜케이스로 변경하면 된다
+        // background-color >> backgroundColor
+        h1.style.backgroundColor = "#f0f";
+
+        // javascript로 지정한 style의 모든 내용 덮어 쓰기
+        h1.style.cssText = 'font-size: 20px; border: 1px solid red;'
+
+
+        let h = window.getComputedStyle(h1, null).getPropertyValue("height");
+        console.log(h)
+        console.log(h1.style.height)
+        h1.style.height = "200px";
+
+        // let s = document.createElement("script")
+        // s.innerHTML = 'alert(123)'
+        // h1.append(s)
+
+        setTimeout(
+            function(){
+                const text = document.querySelector("#id");
+                console.log( text.value );
+                
+                const date = document.querySelector("#date");
+                console.log( date.value );
+
+                const ai = document.querySelector("[name=ai]:checked");
+                console.log(ai.value);
+                
+                const ais = document.querySelectorAll("[name=ai]:checked");
+                for(let i=0; i<ais.length; i++){
+                    console.log( ais[i].checked );
+                    if(ais[i].checked){
+                        console.log(ais[i].value);
+                    }
+                }
+                
+                const select = document.querySelector("#select");
+                console.log(select.value);
+
+                const textarea = document.querySelector("#textarea");
+                console.log(textarea.value);
+
+                let test = textarea.value.replace(/\n/g, "<br>")
+                console.log(test)
+            }
+            
+            , 4 * 1000
+        );
+
+
+    </script>
+</body>
+</html>
