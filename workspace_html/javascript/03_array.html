@@ -33,6 +33,7 @@
         // index에는 아무거나 넣을 수 있음
         // 배열의 길이에 영향을 주지 않음
         arr["name"] = "이름";
+
         console.log("arr", arr);
         console.log('arr["name"]', arr["name"]);
 
@@ -105,6 +106,14 @@
         // 배열 정렬, 단 오름차순만 지원
         arr.sort();
         console.log(arr);
+        // 문자로 변경해서 정렬을 하므로 숫자 정렬할 경우 등 콜백함수를 넣어서 사용
+        arr.sort(function(x, y){
+            // return하는 값이
+            // x - y : 오름차순
+            // y - x : 내림차순
+            // 0 : 순서 변동 없음
+            return x - y;
+        })
         
         // [1, 2, 2, 3, 4, 5]
         // splice(시작index, count)

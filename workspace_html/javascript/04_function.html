@@ -24,6 +24,7 @@
     console.log("a :", a);
     
     // 함수 선언과 동시에 실행(아직 몰라도 됨)
+    
     (
         function test(){
             console.log("test")
@@ -80,7 +81,8 @@
 
     let d = [100, 200];
     console.log(d)
-    console.log(...d)
+    console.log(...d)       // 이거랑
+    console.log(100, 200)   // 이거랑 같음
 
     console.log(  plus(d[0], d[1])  )
     console.log(  plus(...d)  )
@@ -112,6 +114,9 @@
     let times = function (a, b){
         return a * b;
     }
+    function times(a, b){
+        return a * b;
+    }
     console.log( times(3, 4) )
     // 기존의 함수도 함수명을 변수 취급하고 있었다
 
@@ -128,6 +133,8 @@
         }
     }
     pay(10, times);
+
+    pay(10, times());
     pay(10);
     pay(10, 2);
     
@@ -136,6 +143,9 @@
     pay(10, function (a, b){
         return a * b;
     });
+
+
+
 
     /*
         setTimeout : 첫번째 전달인자 : 실행할 함수

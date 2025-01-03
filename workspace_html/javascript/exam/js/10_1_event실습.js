@@ -20,7 +20,16 @@ window.addEventListener("load", function(){
             console.log('id 안썼음')
             document.querySelector('#login_msg').style.color = '#f00';
             document.querySelector('#login_msg').textContent = '아이디는 필수입니다';
+        } else if( pw.value == '' ){
+            document.querySelector('#login_msg').style.color = '#f00';
+            document.querySelector('#login_msg').textContent = '비밀번호는 필수입니다';
+        } else {
+            document.querySelector('#login_msg').textContent = '';
         }
     })
+
+    document.querySelector("")
+
+
 })
 

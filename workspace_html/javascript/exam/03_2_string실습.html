@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const mail1 = "todair@naver.com";
+        const arr_mail1 = mail1.split("@")
+        let id1 = arr_mail1[0];
+        console.log(id1);
+        
+        const idxAt = mail1.indexOf("@");
+        console.log(idxAt)
+        let id2 = mail1.substring(0, idxAt);
+        let id3 = mail1.substr(0, idxAt);
+        console.log(id2, id3);
+
+        const left2 = id1.substring(0, 2);
+        const star_length = id1.length - 2;
+        let star = "";
+        for(let i=0; i<star_length; i++){
+            star += "*";
+        }
+        console.log( left2+star+"@"+arr_mail1[1] )
+        
+
+        const domain = "cafe.naver.com";
+        let idx = domain.indexOf(".");
+        console.log(idx);
+        const domain2 = domain.substr(idx+1);
+        console.log(domain2);
+        idx = domain2.indexOf(".");
+        const domain3 = domain2.substr(0, idx);
+        console.log(domain3)
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

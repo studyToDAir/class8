@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        // 로또 중복 없이 오름차순으로 출력
+        // parseInt(Math.random() * 45) + 1
+/*
+        let 로토1 = 1
+        let 로토2 = 2
+        let 로토3 = 3
+
+        let lotto = [];
+        // lotto = [ 1 ]
+        // lotto = [ 2 ]
+        // lotto.push(2)
+
+        // for (let i = 0; i < 6; i++) {
+        //     lotto.push(parseInt(Math.random() * 45) + 1)
+        // }
+        // console.log(lotto)
+
+        lotto.push(7);
+        lotto.push(3);
+        lotto.push(5);
+        lotto.push(8);
+
+        let value = 5;
+
+        // value 가 이미 lotto 있었는지 확인해서
+        // "이미 있다", "없었다" 둘 중에 하나를 출력
+
+        let dup = false;
+        for(let i=0; i<lotto.length; i++){
+            if(lotto[i] == value){
+                dup = true;
+                break;
+            }
+        }
+
+        if( dup ){
+            // 다시 뽑
+        }
+*/
+
+
+        let lotto = [];
+
+        while(lotto.length < 6){
+            console.log('lotto.length', lotto.length)
+
+            let value = parseInt(Math.random() * 45) + 1;
+
+            let dup = false;
+            for(let i=0; i<lotto.length; i++){
+                if(lotto[i] == value){
+                    dup = true;
+                    break;
+                }
+            }
+
+            if(!dup){
+                lotto.push(value)
+            }
+        }
+        lotto.sort(function(x, y){
+            console.log('x', x, 'y', y)
+            return x - y
+        })
+        console.log(lotto)
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
