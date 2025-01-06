@@ -31,7 +31,7 @@
     text : <input type="text" id="id" value="미리적은글"><br>
     date : <input type="date" id="date"><br>
     radio : 
-    <input type="radio" name="ai" value="1" checked="checked">GPT
+    <input type="radio" name="ai" value="1" data-value="3000" checked="checked">GPT
     <input type="radio" name="ai" value="2">Gemini
     <input type="radio" name="ai" value="3">Bing
     <br>
@@ -162,10 +162,13 @@
                 }
                 
                 const select = document.querySelector("#select");
-                console.log(select.value);
+                console.log('select.value',select.value);
+                const op = select.querySelector("option:checked")
+                console.log(op, op.innerText)
 
                 const textarea = document.querySelector("#textarea");
                 console.log(textarea.value);
+                // textarea.value = "asdf\n asdfasdf"
 
                 let test = textarea.value.replace(/\n/g, "<br>")
                 console.log(test)

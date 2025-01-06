@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.addEventListener("load", function(){
+
+            let login = document.getElementById("login")
+            login.addEventListener("click", ()=>{
+                let pw = document.querySelector("#pw")
+                console.log("pw", pw.value);
+                let pw2 = document.querySelector("#pw2")
+                console.log("pw2", pw2.value);
+
+                let msg = document.querySelector("#msg1")
+                if(pw.value != pw2.value){
+                    msg.innerText = "비번이 다릅니다"
+                } else {
+                    msg.innerText = ""
+                }
+            })
+
+            let same = document.getElementById("same")
+            same.addEventListener("click", function (){
+                const name = document.getElementById("name")
+                const tel = document.getElementById("tel")
+                const addr = document.getElementById("addr")
+
+                const name2 = document.getElementById("name2")
+                const tel2 = document.getElementById("tel2")
+                const addr2 = document.getElementById("addr2")
+
+                let same2 = document.getElementById("same")
+                console.log('same2.checked', same2.checked)
+                if(same2.checked){
+                    name2.value = name.value;
+                    tel2.value = tel.value;
+                    addr2.value = addr.value;
+                } else {
+                    name2.value = '';
+                    tel2.value = '';
+                    addr2.value = '';
+                }
+            })
+
+            const order = document.querySelector("#order");
+            order.addEventListener('click', function(){
+                const kind = document.querySelector("#kind");
+                const size = document.querySelector('[name="size"]:checked');
+                const toppings = document.querySelectorAll('[type=checkbox]:checked');
+                const request = document.querySelector('#request');
+                const view = document.querySelector('#view');
+                
+                view.innerHTML = "주문하신 내역은<br>"
+                // select
+                console.log(kind.value)
+                // value 이용하기
+                // if(kind.value == 1){
+                //     view.innerHTML += "불고기피자"
+                // } else if(kind.value == 2){
+                //     view.innerHTML += "야채피자"
+                // }
+                
+                // option에 적은 글 이용하기
+                // view.innerHTML += kind.querySelector("option:checked").textContent + "피자"
+
+                // option의 속성 이용하기
+                view.innerHTML += kind.querySelector("option:checked").getAttribute("data-name") + "피자"
+                view.innerHTML += "<br>"
+
+                view.innerHTML += "사이즈 : "
+                console.log('size ', size.value)
+                if(size.value == 1){
+                    view.innerHTML += "미디움"
+                } else if(size.value == 2){
+                    view.innerHTML += "라지"
+                } else if(size.value == 3){
+                    view.innerHTML += "패밀리"
+                }
+                view.innerHTML += "<br>"
+
+                
+                // toppings : 배열
+                // 반복문 : for, forEach, while, for-in, for-of, map
+                toppings.forEach(function(element, index, array){
+                    view.innerHTML += element.getAttribute("data-name")
+                    if(index != array.length-1){
+                        view.innerHTML += ","
+                    }
+                })
+
+                view.innerHTML += '<br>요청사항 : '
+                view.innerHTML += request.value
+
+            })
+        })
+
+
+        
+    </script>
+</head>
+<body>
+    <h1>문제1 - 비밀번호 확인</h1>
+    <div>
+        비밀번호 : <input type="text" id="pw"><br>
+        비밀번호 확인 : <input type="text" id="pw2"><br>
+        <div id="msg1"></div>
+        <input type="button" value="로그인" id="login">
+    </div>
+
+    <h1>문제2 - 배송정보 자동완성</h1>
+    <div>
+        <div>
+            보내는 사람<br>
+            이름 : <input type="text" id="name"><br>
+            연락처 : <input type="text" id="tel"><br>
+            주소 : <input type="text" id="addr"><br>
+        </div>
+        <div>
+            받는 사람<br>
+            <label for="same">
+                <input type="checkbox" id="same">
+                보내는 사람과 동일
+            </label>
+            
+            <br>
+            이름 : <input type="text" id="name2"><br>
+            연락처 : <input type="text" id="tel2"><br>
+            주소 : <input type="text" id="addr2"><br>
+        </div>
+    </div>
+    
+    <h1>문제3 - 피자 주문 내역 출력</h1>
+    <div>
+        피자 종류
+        <select id="kind">
+            <option value="1" data-name="불고기" data-value="5000">불고기</option>
+            <option value="2" data-name="야채">야채</option>
+            <option value="3" data-name="고구마">고구마</option>
+            <option value="4" data-name="치즈">치즈</option>
+            <option value="5" data-name="페페로니">페페로니</option>
+        </select>
+        <br>
+        사이즈
+        <input type="radio" name="size" value="1">미디움
+        <input type="radio" name="size" value="2" checked="checked">라지
+        <input type="radio" name="size" value="3" data-value="15000">패밀리
+        <br>
+        토핑
+        <input type="checkbox" name="topping" value="1" data-name="올리브" data-value="500">올리브
+        <input type="checkbox" name="topping" value="2" data-name="파인애플">파인애플
+        <input type="checkbox" name="topping" value="3" data-name="치즈" data-value="1500">치즈
+        <input type="checkbox" name="topping" value="4" data-name="페페로니">페페로니
+        <br>
+        요청사항 <input type="text" id="request">
+        <br>
+        <button type="button" id="order">주문하기</button>
+        <div id="view"></div>
+    </div>
+</body>
+</html>
