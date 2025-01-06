@@ -13,6 +13,15 @@
             position: sticky;
             top: 0;
         }
+
+        #cursor {
+            width: 50px;
+            height: 50px;
+
+            position: absolute;
+            top : 10px;
+            left : 0px;
+        }
     </style>
     <script>
         window.addEventListener("load", init);
@@ -62,12 +71,59 @@
 
             document.querySelector("#login")
                     .addEventListener("click", function(){
-                        const id = document.querySelector("#id").value
-                        const pw = document.querySelector("#pw").value
+                const id = document.querySelector("#id").value
+                const pw = document.querySelector("#pw").value
 
-                        document.querySelector("#console").innerHTML = id +","+ pw
-                    })
+                // if( id == '' ){
+                // if( id.trim() == '' ){
+                if( id.trim().length == 0 ){
+                    document.querySelector("#console").innerHTML = '아이디는 필수입니다'
+                } else {
+                    document.querySelector("#console").innerHTML = id +","+ pw
+                }
+            })
 
+            const id = document.querySelector("#id");
+            // id.addEventListener('keydown', function(){
+            //     console.log('keydown')
+            // })
+            id.addEventListener('keyup', function(event){
+                console.log(event.keyCode)
+                if( event.keyCode == 13 ){
+                    document.querySelector("#pw").focus();
+                }
+            })
+
+            document.querySelector("#pw")
+                .addEventListener("keyup", function(event){
+                    if( event.keyCode == 13 ){
+                        document.querySelector("#login").click();
+                    }
+                })
+
+            document.querySelector("#area")
+                .addEventListener("mouseover", function(){
+                    console.log("마우스 들어옴")
+                })
+            document.querySelector("#area")
+                .addEventListener("mouseout", function(){
+                    console.log("마우스 나감")
+                })
+            
+            // 앞에 아무것도 안쓰면 브라우저 전체에 적용되는 이벤트
+            addEventListener('mousemove', function(event){
+                // console.log("마우스 움직임")
+                // console.log("pageX :", event.pageX, "pageY :", event.pageY)
+                const cursor = document.querySelector("#cursor");
+                cursor.style.top = event.pageY+20 + "px";
+                cursor.style.left = event.pageX+20 + "px";
+
+                // pageX/Y : 스크롤에 관계 없이 문서 좌상단 기준
+                // clientX/Y : 지금 보이는 화면 좌상단 기준
+                // offsetX/Y : 대상 기준으로 좌상단 기준
+
+
+            })
         }
 
         function btn1click(){
@@ -86,6 +142,8 @@
         // 로그인 버튼 클릭 시
         // #console에 아이디, 비밀번호 출력하기
 
+
+        
 
 
     </script>
@@ -106,6 +164,10 @@
         <input type="button" id="login" value="로그인">
     </div>
 
+    <div id="area" style="width: 100px; height:100px; background-color: red;">
 
+    </div>
+
+    <img id="cursor" src="https://png.pngtree.com/png-vector/20230522/ourmid/pngtree-kawaii-brown-white-cat-jumping-happily-vector-png-image_7105169.png">
 </body>
 </html>
