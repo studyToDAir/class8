@@ -22,6 +22,11 @@
             top : 10px;
             left : 0px;
         }
+        .bold {
+            color: red;
+            font-weight: 900;
+        }
+
     </style>
     <script>
         window.addEventListener("load", init);
@@ -88,7 +93,9 @@
             //     console.log('keydown')
             // })
             id.addEventListener('keyup', function(event){
+                console.log(event)
                 console.log(event.keyCode)
+                // if( event.ctrlKey && event.keyCode == 13 ){
                 if( event.keyCode == 13 ){
                     document.querySelector("#pw").focus();
                 }
@@ -102,7 +109,8 @@
                 })
 
             document.querySelector("#area")
-                .addEventListener("mouseover", function(){
+                .addEventListener("mouseover", function(event){
+                    console.log(event)
                     console.log("마우스 들어옴")
                 })
             document.querySelector("#area")
@@ -124,6 +132,139 @@
 
 
             })
+
+            id.addEventListener('focus', function(){
+                id.style.background = 'yellow';
+            })
+            id.addEventListener('blur', function(){
+                id.style.background = '';
+            })
+
+            document.querySelector("#form")
+                .addEventListener('submit', function(event){
+                    // 원래 html의 기본(고유) 기능을 막아줌
+                    // 여기서는 submit 기능 막음
+                    event.preventDefault();
+                    console.log('서밋 이벤트');
+
+                    // 검색어가 1글자 이하면 alert 출력
+                    // 2글자 이상이면 console로 "검색" 출력
+
+                    // 검색어에 해당하는 dom 획득
+                    let keyword = document.querySelector("#search")
+                    // dom의 검색어를 추출
+                    // 추출한 글씨의 길이 구하기
+                    // 길이와 조건을 비교
+                    if(keyword.value.length < 2){
+                        alert('검색어는 두글자 이상입니다')
+                    } else {
+                        console.log("검색")
+                        document.querySelector("#form").submit()
+                    }
+                })
+            
+            // addEventListener('selectstart', function(event){
+            //     event.preventDefault();
+            // })
+
+            // 클래스가 chk인 모든 요소를 가져와서
+            // 모든 value, 체크 여부를 console로 출력하시오
+            // 체크된 것은 value에 !!! 붙여서 출력
+            const chks = document.querySelectorAll('.chk');
+            console.log(chks)
+            for(let i=0; i<chks.length; i++){
+                console.log(chks[i].value, chks[i].checked)
+
+                if(chks[i].checked){
+                    console.log("!!! ", chks[i].value)
+                }
+            }
+            chks[0].checked = true;
+            chks[3].checked = false;
+
+            // 전체선택 시 전체선택되게
+            // 0.전체선택 관련 dom 확보
+            // 전체선택 클릭했을 때
+            document.querySelector("#chk_all")
+                .addEventListener("click", function(){
+
+                    let all = document.querySelector("#chk_all");
+
+                    const chks = document.querySelectorAll('.chk');
+                    for(let i=0; i<chks.length; i++){
+                        // if(all.checked){
+                        //     // 체크 되어 있으면 
+                        //     //      모든 chk가 체크되게
+                        //     chks[i].checked = true;
+                        // } else {
+                        //     // 체크 풀려 있으면
+                        //     //      모든 chk가 체크 해제
+                        //     chks[i].checked = false;
+                        // }
+                        chks[i].checked = all.checked
+                    }
+
+                })
+            
+            // 자식 checkbox들이 모두 체크되어 있으면 전체선택 체크
+            // 자식 checkbox중에서 하나라도 풀려있으면 전체선택 체크 해제
+            for( let a of chks ){
+                // 각각 클릭 이벤트 주기
+                a.addEventListener('click', function(){
+                    let flag = true;
+                    // 하나라도 해제된게 있으면
+                    // for( let i in chks ){    // entries라는게 i로 들어가는 경우가 있어서 실패
+                    for( let i of chks ){
+                        if(!i.checked){
+                            flag = false;
+                            break;
+                        }
+                    }
+                    console.log(flag)
+
+                    if(!flag){
+                        document.querySelector("#chk_all").checked = false
+                    } else {
+                        document.querySelector("#chk_all").checked = true
+                    }
+
+                })
+            }
+
+            // this : window 객체를 가지고 있다
+            console.log(this);
+
+            // 콜백을 arrow함수로 하면 this는 window로 유지됨
+            document.querySelector("#parent")
+                .addEventListener('click', function(event){
+                    
+                    // event.target : 이벤트가 발생한 DOM
+                    console.log('event.target :', event.target);
+                    
+                    // event.currentTarget : 이벤트가 적용된 DOM
+                    console.log('event.currentTarget :', event.currentTarget)
+                    
+                    // this는 더이상 window가 아님
+                    // 이렇게 내용이 바뀔 수 있기 때문에
+                    // js에서 this는 알고 있는 것만 사용한다
+                    console.log('this :', this);
+                    console.log(this === event.currentTarget);
+
+                })
+
+            document.querySelector("#child1")
+                .addEventListener('click', function(event){
+
+                    // 전파 방지
+                    // 부모로 전달되는 이벤트를 중지
+                    event.stopPropagation();
+
+                    console.log('자식1 클릭')
+
+
+                    document.querySelector("#parent").innerHTML += ""
+                })
+
         }
 
         function btn1click(){
@@ -169,5 +310,72 @@
     </div>
 
     <img id="cursor" src="https://png.pngtree.com/png-vector/20230522/ourmid/pngtree-kawaii-brown-white-cat-jumping-happily-vector-png-image_7105169.png">
+
+    <form id="form" method="get" action="https://search.naver.com/search.naver">
+        네이버 검색 : <input type="text" name="query" id="search">
+        <input type="submit" value="검색">
+    </form>
+
+    떡볶이 토핑: <input type="checkbox" id="chk_all"> 전체선택<br>
+    <input type="checkbox" class="chk" value="분모자">분모자
+    <input type="checkbox" class="chk" value="비엔나">비엔나
+    <input type="checkbox" class="chk" value="우삼겹">우삼겹
+    <input type="checkbox" class="chk" value="치즈" checked="checked">치즈
+    <input type="checkbox" class="chk" value="라면">라면
+
+    <div id="parent">
+        부모
+        <div id="child1">자식1</div>
+        <div id="child2" data-code="2">자식2</div>
+    </div>
+
+
+    <hr>
+
+    <div id="li_1">첫번째</div>
+    <div id="li_2">두번째</div>
+
+    <script>
+        let li_1 = document.querySelector("#li_1")
+        console.log('li_1', li_1)
+        li_1.addEventListener('click', function(event){
+            console.log(1)
+            console.log(li_1)
+            console.log(event.target)
+            console.log(li_1 === event.target)
+            console.log(event.currentTarget)
+            console.log(li_1 === event.currentTarget)
+        })
+        let li_2= document.querySelector("#li_2")
+        li_2.addEventListener('click', function(){
+            console.log(2)
+        })
+    </script>
+
+
+    <ol id="ol">
+        <li id="ol_li_1" class="">li 첫번째</li>
+        <li id="ol_li_2" class="">li 두번째</li>
+    </ol>
+    <script>
+        // #ol을 클릭하면
+        // event.target, event.currentTarget 출력
+        let ol = document.querySelector("#ol")
+        ol.addEventListener('click', function(event){
+            console.log('event.target', event.target)
+            console.log('event.currentTarget', event.currentTarget)
+
+            // document.querySelector("#ol_li_1").classList.remove("bold")
+            // document.querySelector("#ol_li_2").classList.remove("bold")
+
+            const lis = document.querySelectorAll("#ol li")
+            for(let i=0; i<lis.length; i++){
+                lis[i].classList.remove("bold")
+            }
+            // event.target.style.color = 'red';
+            event.target.classList.add("bold")
+
+        })
+    </script>
 </body>
 </html>
