@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,9 +12,10 @@
         }
     </style>
 </head>
+
 <body>
     <div id="msg">
-        <span>원래 </span>      있던 글씨
+        <span>원래 </span> 있던 글씨
     </div>
 
     <div id="test">
@@ -24,13 +26,13 @@
         </div> -->
 
     </div>
-   
+
     <h1 id="h1">style 테스트</h1>
 
     <hr>
     text : <input type="text" id="id" value="미리적은글"><br>
     date : <input type="date" id="date"><br>
-    radio : 
+    radio :
     <input type="radio" name="ai" value="1" data-value="3000" checked="checked">GPT
     <input type="radio" name="ai" value="2">Gemini
     <input type="radio" name="ai" value="3">Bing
@@ -63,12 +65,12 @@
         // 그런데 tag도 글씨로 인식한다
         msg.textContent = "<h1>제목</h1>    a  b     c";
         msg.innerText = "<h1>제목1</h1>    a1  b1     c1";
-        
+
         // tag는 tag로 인식한다
         msg.innerHTML = "<h1>제목1</h1>    a1  b1     c1";
 
         // msg.innerHTML = "<script>alert(1)"+"<"+"/script>";
-        
+
         msg.innerHTML = msg.innerHTML + "<h2>제목2</h2>";
         msg.innerHTML += "<h2>제목2</h2>";
 
@@ -121,7 +123,7 @@
 
         let h1 = document.querySelector("#h1")
         console.log('h1.style.color', h1.style.color);
-        
+
         h1.style.color = 'blue';
         console.log('h1.style.color', h1.style.color);
 
@@ -143,26 +145,26 @@
         // h1.append(s)
 
         setTimeout(
-            function(){
+            function () {
                 const text = document.querySelector("#id");
-                console.log( text.value );
-                
+                console.log(text.value);
+
                 const date = document.querySelector("#date");
-                console.log( date.value );
+                console.log(date.value);
 
                 const ai = document.querySelector("[name=ai]:checked");
                 console.log(ai.value);
-                
+
                 const ais = document.querySelectorAll("[name=ai]:checked");
-                for(let i=0; i<ais.length; i++){
-                    console.log( ais[i].checked );
-                    if(ais[i].checked){
+                for (let i = 0; i < ais.length; i++) {
+                    console.log(ais[i].checked);
+                    if (ais[i].checked) {
                         console.log(ais[i].value);
                     }
                 }
-                
+
                 const select = document.querySelector("#select");
-                console.log('select.value',select.value);
+                console.log('select.value', select.value);
                 const op = select.querySelector("option:checked")
                 console.log(op, op.innerText)
 
@@ -173,11 +175,12 @@
                 let test = textarea.value.replace(/\n/g, "<br>")
                 console.log(test)
             }
-            
+
             , 4 * 1000
         );
 
 
     </script>
 </body>
+
 </html>
