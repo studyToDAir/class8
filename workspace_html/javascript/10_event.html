@@ -357,6 +357,7 @@
         <li id="ol_li_1" class="">li 첫번째</li>
         <li id="ol_li_2" class="">li 두번째</li>
     </ol>
+
     <script>
         // #ol을 클릭하면
         // event.target, event.currentTarget 출력
@@ -369,6 +370,7 @@
             // document.querySelector("#ol_li_2").classList.remove("bold")
 
             const lis = document.querySelectorAll("#ol li")
+            // ol.querySelectorAll("li")
             for(let i=0; i<lis.length; i++){
                 lis[i].classList.remove("bold")
             }
@@ -377,5 +379,111 @@
 
         })
     </script>
+
+
+    <style>
+        .title {
+            color: red;
+        }
+        .hide {
+            display: none;
+        }
+    </style>
+    <div>
+        <div id="a1" class="title">Accordion Item #1</div>
+        <div class="detail hide">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit quod mollitia voluptatum? Cumque, ullam numquam laudantium voluptatum autem, enim dolorum at nemo eaque dolores aliquid tempora praesentium temporibus, pariatur beatae.
+        </div>
+    </div>
+    
+    <div>
+        <div id="a2" class="title">Accordion Item #2</div>
+        <div class="detail hide">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit quod mollitia voluptatum? Cumque, ullam numquam laudantium voluptatum autem, enim dolorum at nemo eaque dolores aliquid tempora praesentium temporibus, pariatur beatae.
+        </div>
+    </div>
+
+
+
+
+    <div>
+        <div id="a3" class="title">Accordion Item #3</div>
+        <div class="detail hide">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit quod mollitia voluptatum? Cumque, ullam numquam laudantium voluptatum autem, enim dolorum at nemo eaque dolores aliquid tempora praesentium temporibus, pariatur beatae.
+        </div>
+    </div>
+    <div>
+        <div id="a4" class="title">Accordion Item #4</div>
+        <div class="detail hide">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit quod mollitia voluptatum? Cumque, ullam numquam laudantium voluptatum autem, enim dolorum at nemo eaque dolores aliquid tempora praesentium temporibus, pariatur beatae.
+        </div>
+    </div>
+
+
+    <script>
+        // #a1을 클릭하면
+        // 부모로 올라가서
+        // 자식중에 .detail 확보하고 조작
+        // document.querySelector("#a1")
+        //     .addEventListener('click', function(event){
+        //         const p = event.target.parentNode
+        //         const d = p.querySelector(".detail")
+        //         // d.style.display = "block";
+        //         d.classList.remove('hide');
+        //     })
+
+        // // #a1, #a2 등을 배열로 넣을꺼라서 주석처리
+        // document.querySelector("#a2")
+        //     .addEventListener('click', function(event){
+
+        //         // 먼저 모든 .detail에 hide 추가
+        //         let details = document.querySelectorAll('.detail');
+        //         for(let i=0; i<details.length; i++){
+        //             details[i].classList.add('hide');
+        //         }
+
+        //         // 내껏만 hide를 제거
+        //         const p = event.target.parentNode
+        //         const d = p.querySelector(".detail")
+        //         d.classList.remove('hide');
+        //     })
+        const titles = document.querySelectorAll(".title")
+        for(let i=0; i<titles.length; i++){
+            titles[i].addEventListener('click', function(event){
+
+                // 내껏만 hide를 제거
+                const p = event.target.parentNode
+                const isHide = p.querySelector(".detail.hide")
+                
+                // 먼저 모든 .detail에 hide 추가
+                let details = document.querySelectorAll('.detail');
+                for(let j=0; j<details.length; j++){
+                    details[j].classList.add('hide');
+                }
+
+                if( isHide != null ){
+                    // 무조건 .detail 요소를 가져오기
+                    const d = p.querySelector(".detail")
+                    d.classList.remove('hide');
+                }
+
+            })
+        }
+    </script>
+
+    <!-- <div id="a2">
+        Accordion Item #2
+        <div>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit quod mollitia voluptatum? Cumque, ullam numquam laudantium voluptatum autem, enim dolorum at nemo eaque dolores aliquid tempora praesentium temporibus, pariatur beatae.
+        </div>
+    </div> -->
+    <script>
+        document.querySelector("#a2")
+            .addEventListener('click', function(event){
+                event.currentTarget.querySelector("div")
+        })
+    </script>
+
+
 </body>
 </html>
