@@ -153,5 +153,63 @@
             })
         }
     </script>
+
+
+
+    <style>
+        #menu {
+            display: flex;
+            border: 1px solid blue;
+        }
+        #menu div {
+            flex-grow: 1;
+            border: 1px solid red;
+        }
+        #content {
+            border: 1px solid red;
+        }
+        #content div {
+            border: 1px solid red;
+            height: 100px;
+        }
+    </style>
+    <div>
+        <div id="content">
+            <div id="content1" class="">About 내용</div>
+            <div id="content2" class="hide">Products 내용</div>
+            <div id="content3" class="hide">Technology 내용</div>
+            <div id="content4" class="hide">Downloads 내용</div>
+        </div>
+        <div id="menu">
+            <div data-topping="생크림"  data-view="content1">
+                About
+            </div>
+            <div data-view="content2">Products</div>
+            <div data-view="content3">Technology</div>
+            <div data-view="content4">Downloads</div>
+        </div>
+    </div>
+    <script>
+        document.querySelector("#menu")
+            .addEventListener('click', function(evt){
+            console.log(evt.target.textContent)
+            console.log(evt.target.getAttribute('data-topping'))
+            console.log(evt.target.getAttribute('data-view'))
+
+            let id = evt.target.getAttribute('data-view')
+            console.log( document.querySelector("#"+id) )
+
+
+            const contents = document.querySelectorAll("[id^=content]:not(#content)")
+
+            for(let i=0; i<contents.length; i++){
+                contents[i].classList.add('hide');
+            }
+
+            document.querySelector("#"+id).classList.remove('hide');
+
+        })
+    </script>
+
 </body>
 </html>
