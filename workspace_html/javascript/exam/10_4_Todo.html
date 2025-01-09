@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=2.0">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            // 추가버튼 클릭 시
+            //      "추가버튼"을 확보 querySelector
+            //      그 버튼에 클릭 이벤트를 줄꺼고
+            //      콘솔로 클릭 되었는지 확인한번 해보자
+            // text에 적은 값 확보 - 출력으로 확인
+            // 일단 값을 html에 표시
+            //      html에 특정 dom 가져와서
+            //      어떻게 표시? innerText, innerHTML, textContent, append
+            // 출력하는 김에 checkbox, text, 삭제버튼 표시
+            // 두개도 출력되나? ok
+
+            // 삭제버튼에 클릭 이벤트
+            // 해당 내용만 삭제
+            // 삭제하려고 했더니 다른 것을 선택하기 어려워서
+            // 출력할 내용을 div로 감싸고
+            // 삭제 시 부모를 remove
+
+            // 지금 누른 버튼
+            // 의 부모를 
+            // remove
+
+
+            document.querySelector("#add")
+            .addEventListener('click', function(){
+                const todo = document.querySelector("#todo").value;
+                console.log('todo', todo);
+                const list = document.querySelector("#list");
+
+                /*
+                // list.innerHTML += '<div><input type="checkbox"><span>'+ todo +'</span><button class="del">삭제</button></div>'
+                list.innerHTML += `
+                <div>
+                    <input type="checkbox">
+                    <span>${todo}</span>
+                    <button class="del">삭제</button>
+                </div>`
+
+                let 배열 = document.querySelectorAll(".del")
+                // 배열.addEventListener('click', function(){
+                //     console.log('삭제')
+                // })
+                for(let i=0; i<배열.length; i++){
+                    배열[i].addEventListener('click', function(event){
+                        // console.log('삭제')
+                        // console.log(event.target)
+                        event.target.parentNode.remove();
+                    })
+                }
+                */
+                let div = document.createElement('div'); // <div></div>
+
+                // let input = document.createElement('input')
+                // input.setAttribute('type', 'checkbox')
+                // div.append(input)
+
+                // let span = document.createElement('span')
+                // span.textContent = todo
+                // div.append(span)
+
+                div.innerHTML = `
+                    <input type="checkbox">
+                    <span>${todo}</span>
+                    <button class="del">삭제</button>
+                `
+                div.querySelector('.del').addEventListener('click', function(event){
+                    event.target.parentNode.remove();
+                })
+                list.append(div)
+
+
+                
+            })
+
+
+        }
+    </script>
+</head>
+<body>
+    <h1>할일 목록</h1>
+    <div>
+        할일 : <input type="text" id="todo"> <button id="add">추가</button>
+        <br>
+        <label for="chk_all">
+            <input type="checkbox" id="chk_all">전체 선택
+        </label>
+        <button>선택 삭제</button>
+    </div>
+    <hr>
+    <div id="list">
+        
+    </div>
+</body>
+</html>

@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-
         .bold {
             color: red;
             font-weight: 900;
         }
-
     </style>
 </head>
+
 <body>
-    
+
     <div id="li_1">첫번째</div>
     <div id="li_2">두번째</div>
 
     <script>
         let li_1 = document.querySelector("#li_1")
         console.log('li_1', li_1)
-        li_1.addEventListener('click', function(event){
+        li_1.addEventListener('click', function (event) {
             console.log(1)
             console.log(li_1)
             console.log(event.target)
@@ -29,8 +29,8 @@
             console.log(event.currentTarget)
             console.log(li_1 === event.currentTarget)
         })
-        let li_2= document.querySelector("#li_2")
-        li_2.addEventListener('click', function(){
+        let li_2 = document.querySelector("#li_2")
+        li_2.addEventListener('click', function () {
             console.log(2)
         })
     </script>
@@ -45,7 +45,7 @@
         // #ol을 클릭하면
         // event.target, event.currentTarget 출력
         let ol = document.querySelector("#ol")
-        ol.addEventListener('click', function(event){
+        ol.addEventListener('click', function (event) {
             console.log('event.target', event.target)
             console.log('event.currentTarget', event.currentTarget)
 
@@ -54,7 +54,7 @@
 
             const lis = document.querySelectorAll("#ol li")
             // ol.querySelectorAll("li")
-            for(let i=0; i<lis.length; i++){
+            for (let i = 0; i < lis.length; i++) {
                 lis[i].classList.remove("bold")
             }
             // event.target.style.color = 'red';
@@ -68,6 +68,7 @@
         .title {
             color: red;
         }
+
         .hide {
             display: none;
         }
@@ -75,14 +76,18 @@
     <div>
         <div id="a1" class="title">Accordion Item #1</div>
         <div class="detail hide">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit quod mollitia voluptatum? Cumque, ullam numquam laudantium voluptatum autem, enim dolorum at nemo eaque dolores aliquid tempora praesentium temporibus, pariatur beatae.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit quod mollitia voluptatum? Cumque, ullam
+            numquam laudantium voluptatum autem, enim dolorum at nemo eaque dolores aliquid tempora praesentium
+            temporibus, pariatur beatae.
         </div>
     </div>
-    
+
     <div>
         <div id="a2" class="title">Accordion Item #2</div>
         <div class="detail hide">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit quod mollitia voluptatum? Cumque, ullam numquam laudantium voluptatum autem, enim dolorum at nemo eaque dolores aliquid tempora praesentium temporibus, pariatur beatae.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit quod mollitia voluptatum? Cumque, ullam
+            numquam laudantium voluptatum autem, enim dolorum at nemo eaque dolores aliquid tempora praesentium
+            temporibus, pariatur beatae.
         </div>
     </div>
 
@@ -92,13 +97,17 @@
     <div>
         <div id="a3" class="title">Accordion Item #3</div>
         <div class="detail hide">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit quod mollitia voluptatum? Cumque, ullam numquam laudantium voluptatum autem, enim dolorum at nemo eaque dolores aliquid tempora praesentium temporibus, pariatur beatae.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit quod mollitia voluptatum? Cumque, ullam
+            numquam laudantium voluptatum autem, enim dolorum at nemo eaque dolores aliquid tempora praesentium
+            temporibus, pariatur beatae.
         </div>
     </div>
     <div>
         <div id="a4" class="title">Accordion Item #4</div>
         <div class="detail hide">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit quod mollitia voluptatum? Cumque, ullam numquam laudantium voluptatum autem, enim dolorum at nemo eaque dolores aliquid tempora praesentium temporibus, pariatur beatae.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit quod mollitia voluptatum? Cumque, ullam
+            numquam laudantium voluptatum autem, enim dolorum at nemo eaque dolores aliquid tempora praesentium
+            temporibus, pariatur beatae.
         </div>
     </div>
 
@@ -131,20 +140,20 @@
         //         d.classList.remove('hide');
         //     })
         const titles = document.querySelectorAll(".title")
-        for(let i=0; i<titles.length; i++){
-            titles[i].addEventListener('click', function(event){
+        for (let i = 0; i < titles.length; i++) {
+            titles[i].addEventListener('click', function (event) {
 
                 // 내껏만 hide를 제거
                 const p = event.target.parentNode
                 const isHide = p.querySelector(".detail.hide")
-                
+
                 // 먼저 모든 .detail에 hide 추가
                 let details = document.querySelectorAll('.detail');
-                for(let j=0; j<details.length; j++){
+                for (let j = 0; j < details.length; j++) {
                     details[j].classList.add('hide');
                 }
 
-                if( isHide != null ){
+                if (isHide != null) {
                     // 무조건 .detail 요소를 가져오기
                     const d = p.querySelector(".detail")
                     d.classList.remove('hide');
@@ -161,13 +170,16 @@
             display: flex;
             border: 1px solid blue;
         }
+
         #menu div {
             flex-grow: 1;
             border: 1px solid red;
         }
+
         #content {
             border: 1px solid red;
         }
+
         #content div {
             border: 1px solid red;
             height: 100px;
@@ -181,7 +193,7 @@
             <div id="content4" class="hide">Downloads 내용</div>
         </div>
         <div id="menu">
-            <div data-topping="생크림"  data-view="content1">
+            <div data-topping="생크림" data-view="content1">
                 About
             </div>
             <div data-view="content2">Products</div>
@@ -191,25 +203,189 @@
     </div>
     <script>
         document.querySelector("#menu")
-            .addEventListener('click', function(evt){
-            console.log(evt.target.textContent)
-            console.log(evt.target.getAttribute('data-topping'))
-            console.log(evt.target.getAttribute('data-view'))
+            .addEventListener('click', function (evt) {
+                console.log(evt.target.textContent)
+                console.log(evt.target.getAttribute('data-topping'))
+                console.log(evt.target.getAttribute('data-view'))
 
-            let id = evt.target.getAttribute('data-view')
-            console.log( document.querySelector("#"+id) )
+                let id = evt.target.getAttribute('data-view')
+                console.log(document.querySelector("#" + id))
 
 
-            const contents = document.querySelectorAll("[id^=content]:not(#content)")
+                const contents = document.querySelectorAll("[id^=content]:not(#content)")
 
-            for(let i=0; i<contents.length; i++){
-                contents[i].classList.add('hide');
-            }
+                for (let i = 0; i < contents.length; i++) {
+                    contents[i].classList.add('hide');
+                }
 
-            document.querySelector("#"+id).classList.remove('hide');
+                document.querySelector("#" + id).classList.remove('hide');
 
-        })
+            })
     </script>
+
+
+
+<hr>
+
+    <style>
+        #background {
+            border: 1px solid black;
+            width: 50vw;
+            height: 800px;
+            display: flex
+        }
+
+        #right {
+            border: 1px solid black;
+            display: inline-block;
+
+        }
+
+        #left {
+            border: 1px solid black;
+            display: inline-block;
+        }
+
+
+        .article1 {
+            height: 100px;
+            width: 100px;
+            background-image: url("https://thumbnail8.coupangcdn.com/thumbnails/remote/48x48ex/image/vendor_inventory/c2e9/d62a7e7640e74b8ac61a8b12f6dd6aa49a46bb2d02ae4a86e0ea3376585e.jpg");
+            background-repeat: no-repeat;
+            background-size: contain;
+
+        }
+
+        .article2 {
+            height: 100px;
+            width: 100px;
+            background-image: url("https://thumbnail10.coupangcdn.com/thumbnails/remote/48x48ex/image/retail/images/114881920222184-00ea9d8e-9e26-4ca5-8274-7e03ebdc4bf2.png");
+            background-repeat: no-repeat;
+            background-size: contain;
+
+        }
+
+        .article3 {
+            height: 100px;
+            width: 100px;
+            background-image: url("https://thumbnail9.coupangcdn.com/thumbnails/remote/48x48ex/image/retail/images/114881919374050-97316b1e-29b4-4cff-81d5-bc20f833d055.png");
+            background-repeat: no-repeat;
+            background-size: contain;
+
+        }
+
+        .article4 {
+            height: 100px;
+            width: 100px;
+            background-image: url("https://thumbnail8.coupangcdn.com/thumbnails/remote/492x492ex/image/vendor_inventory/c2e9/d62a7e7640e74b8ac61a8b12f6dd6aa49a46bb2d02ae4a86e0ea3376585e.jpg");
+            background-repeat: no-repeat;
+            background-size: contain;
+
+        }
+
+        .article5 {
+            height: 100px;
+            width: 100px;
+            background-image: url("https://thumbnail10.coupangcdn.com/thumbnails/remote/492x492ex/image/retail/images/114881920222184-00ea9d8e-9e26-4ca5-8274-7e03ebdc4bf2.png");
+            background-repeat: no-repeat;
+            background-size: contain;
+
+        }
+
+        .article6 {
+            height: 100px;
+            width: 100px;
+            background-image: url("https://thumbnail9.coupangcdn.com/thumbnails/remote/492x492ex/image/retail/images/114881919374050-97316b1e-29b4-4cff-81d5-bc20f833d055.png");
+            background-repeat: no-repeat;
+            background-size: contain;
+
+        }
+    </style>
+    <div id="background">
+        <div id="right">
+            <div class="article1 fon"></div>
+            <div class="fon article2 fon"></div>
+            <div class="fon article3"></div>
+<!-- 
+            <div class="article4 fon"></div>
+            <div class="article5 fon"></div>
+            <div class="article6 fon"></div>
+ -->
+
+            <!-- ^=
+            $=
+            *=
+            [class~=fon]
+            .fon -->
+        </div>
+        <div id="left">
+            <div class="article4 fon"></div>
+            <div class="fon article5 hide"></div>
+            <div class="article6 fon hide"></div>
+        </div>
+    </div>
+
+    <script>
+        let right = document.querySelector('#right')
+        let left = document.querySelector('#left')
+        right.addEventListener("mouseover", function (e) {
+            console.log(e.target)
+
+
+            let bb = e.target.getAttribute("class")
+            console.log("bb :", bb)
+            let cc = bb.split(" ")
+            let idx = -1;
+            for(let i=0; i<cc.length; i++){
+                if(cc[i].indexOf("article") == 0){
+                    idx = cc[i].split('article')[1]
+                }
+            }
+            // idx: 2
+            console.log(parseInt(idx) + 3)  // 5
+
+            document.querySelectorAll("#left div").forEach(function(tag){
+                tag.classList.add('hide');
+            })
+
+            let 그녀석 = document.querySelector("#left div[class ~= article"+ (parseInt(idx) + 3) +"]");
+            그녀석.classList.remove('hide')
+        })
+
+    </script>
+
+<hr>
+
+<style>
+    #char {
+        border: 1px solid black;
+        width: 200px;
+
+        position: relative;
+        top: 0;
+        left: 0;
+    }
+</style>
+<img id="char" src="https://thumbnail8.coupangcdn.com/thumbnails/remote/492x492ex/image/vendor_inventory/c2e9/d62a7e7640e74b8ac61a8b12f6dd6aa49a46bb2d02ae4a86e0ea3376585e.jpg">
+
+<script>
+    let left2 = 0;
+    let step = 10;
+    document.querySelector('#char').style.left = left2+'px'
+    addEventListener('keydown', function(event){
+        console.log(event.keyCode)
+        // 오른쪽 방향키
+        if(event.keyCode == 39){
+            console.log(document.querySelector('#char').style.left)
+
+            left2 += step
+            document.querySelector('#char').style.left = left2+'px'
+        }
+    })
+</script>
+
+
+
 
 </body>
 </html>
