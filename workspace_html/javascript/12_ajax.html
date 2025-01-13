@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // window.onload = ()=>{}
+        window.addEventListener('load', function(){
+            document.querySelector('#btn1')
+            .addEventListener('click', function(){
+    
+                // ajax 객체 생성
+                // 반송 택배 기사 고용
+                const xhr = new XMLHttpRequest();
+                console.log(1, xhr.responseText)
+                // 보낼 준비
+                // 택배 기사님께 주소와 방식 알려줌
+                // xhr.open('get', 'http://daum.net');
+                // xhr.open('get', 'http://127.0.0.1:5500/javascript/11_json.html');
+                xhr.open('get', 'https://jsonplaceholder.typicode.com/users');
+                // 보내기
+                // 기사님 출발
+                xhr.send();
+    
+                // 다녀온 뒤
+                xhr.onload = function(){
+                    console.log('다녀왔습니다');
+                    // xhr.responseText : 수거한 내용이 담겨있음
+                    console.log(xhr.responseText)
+    
+                    const data = JSON.parse(xhr.responseText)
+                    console.log(data)
+                    // 첫번째 사람의
+                    console.log(data[0])
+                    // username 출력
+                    console.log(data[0].username)
+                    console.log(data[0]['username'])
+                    // lat 출력
+                    console.log(data[0].address.geo.lat)
+    
+                }
+    
+            })
+
+
+            document.querySelector('#btn2')
+            .addEventListener('click', function(){
+    
+                const xhr = new XMLHttpRequest();
+                xhr.open('get', 'https://cors-anywhere.herokuapp.com/https://polling.finance.naver.com/api/realtime?query=SERVICE_ITEM:034220|SERVICE_RECENT_ITEM:034220,005930,089590&_callback=window.__jindo2_callback._6320');
+                xhr.send();
+                xhr.onload = function(){
+                    console.log('다녀왔습니다');
+                    console.log(xhr.responseText)
+                }
+    
+            })
+
+            document.querySelector('#btn3')
+            .addEventListener('click', function(){
+    
+                const xhr = new XMLHttpRequest();
+
+                // get 방식의 전달인자 보내기
+                // 이런 주소가 있을때 "서버ip:port/주소"
+                // 주소?키=벨류&key=value&key2=value2
+                let url = 'http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtFcst'
+                url += '?'
+                url += 'serviceKey=qVTaW2lslPLGXY2uHKVY3Vuc66ZQmC950RmMKYEg4Grvfz%2FeYbsd%2Fp4F0CzdQQwC26aBf2fTEHW76VU0OA04RQ%3D%3D'
+                url += '&'
+                url += 'dataType='+'JSON'
+                url += '&'
+                url += 'base_date='+'20250113'
+                url += '&'
+                url += 'base_time='+'1600'
+                url += '&'
+                url += 'nx='+'63'
+                url += '&'
+                url += 'ny='+'110'
+                url += '&'
+                url += 'numOfRows='+'1000'
+                console.log(url)
+                
+                xhr.open('get', url);
+                xhr.send();
+                xhr.onload = function(){
+                    console.log('다녀왔습니다');
+                    console.log(xhr.responseText)
+    
+                    let data = JSON.parse(xhr.responseText)
+                    console.log(data)
+
+                    // 3시간 분량의
+                    // 시간, 기온, 강수량, 습도
+                    //       T1H, RN1   , REH
+
+                    // form으로 먼저 실습
+                }
+    
+            })
+        })
+    </script>
+</head>
+<body>
+    <button type="button" id="btn1">ajax 실행</button>
+    <button type="button" id="btn2">lg 디스플레이 실시간 주가</button>
+    <button type="button" id="btn3">날씨</button>
+</body>
+</html>
