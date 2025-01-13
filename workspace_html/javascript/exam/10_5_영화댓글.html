@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #movie_contents {
+            border: 1px solid black;
+            display: flex;
+        }
+        #movie_contents div {
+            border: 1px solid red;
+            flex-grow: 1;
+        }
+        #detail_container div {
+            display: none;
+        }
+        .hide {
+            display: none;
+        }
+        .active {
+            display: block !important;
+        }
+    </style>
+
+    <script>
+
+        window.addEventListener('load', function(){
+            // 영화1 클릭 시
+            // 영화1의 내용 표시
+            // 전략 :
+            // 영화에 index를 적어 놓고 
+            // querySelectorAll로 상세를 가져와서
+            // 해당 index의 상세만 표시
+            document.querySelector('#movie_contents')
+            .addEventListener('click', function(event){
+                let details = document.querySelectorAll('#detail_container div')
+                for(let i=0; i<details.length; i++){
+                    details[i].classList.remove('active')
+                }
+    
+                let idx = event.target.getAttribute('index');
+                details[idx].classList.add('active')
+            })
+
+            document.querySelector('#add')
+            .addEventListener('click', function(){
+                let comment = document.querySelector('#comment');
+                let value = comment.value            
+                comment.value = ''
+
+                let div = document.createElement('div')     // <div></div>
+                div.innerHTML = '<div class="origin">'
+                    + '    <span class="text">'+ value +'</span>'
+                    + '    <input type="button" class="del" value="삭제">'
+                    + '    <input type="button" class="modify" value="수정">'
+                    + '</div>'
+                    
+                    + '<div class="child hide">'
+                    + '    <input type="text" class="modify_text">'
+                    + '    <input type="button" class="confirm" value="확인">'
+                    + '    <input type="button" class="cancel" value="취소">'
+                    + '</div>'
+                // 삭제 전략2 :
+                // 댓글을 추가하기 전에
+                // 이벤트를 적용하기
+                div.querySelector('.del').addEventListener('click', function(event){
+                    event.target.parentNode.remove()
+                })
+                div.querySelector('.modify').addEventListener('click', function(event){
+                    event.target.parentNode.classList.add('hide')
+                    // 기존 text를 input에 넣기
+                    let text = event.target.parentNode.querySelector('.text').innerText
+                    event.target.parentNode.parentNode.querySelector('.modify_text').value = text
+                    
+                    // 수정관련 ui 표시
+                    event.target.parentNode.parentNode.querySelector('.child').classList.remove('hide')
+                })
+
+                div.querySelector('.confirm').addEventListener('click', function(event){
+                    let newText = event.target.parentNode.querySelector('.modify_text').value
+                    event.target.parentNode.parentNode.querySelector('.text').innerText = newText
+                    event.target.parentNode.classList.add('hide')
+                    event.target.parentNode.parentNode.querySelector('.origin').classList.remove('hide')
+                })
+
+                div.querySelector('.cancel').addEventListener('click', function(event){
+                    event.target.parentNode.classList.add('hide')
+                    event.target.parentNode.parentNode.querySelector('.origin').classList.remove('hide')
+                })
+
+
+                document.querySelector('#list').prepend(div)
+
+                // 삭제 전략1 : 
+                // document.querySelectorAll('.del')
+                // 모든 삭제 버튼마다 클릭 이벤트를 준다
+                // 실패 : 중첩된 이벤트 발생
+
+                // 수정 1단계 :
+                // 수정버튼 클릭 시 input+확인버튼 표시
+                //      1. 원래 있던거 표시
+                //      2. 새로 추가
+
+            })
+        })
+
+    </script>
+</head>
+<body>
+    <!--
+        1. 영화 종류 보여주기
+        2. 영화 상세 내용 보여주기
+        3. 댓글+별점 입력 UI
+        4. 댓글 표시
+        5. 댓글 수정, 삭제    
+    -->
+    <div id="movie_contents">
+        <div index="0">영화1</div>
+        <div index="1">영화2</div>
+        <div index="2">영화3</div>
+        <div index="3">영화4</div>
+    </div>
+    <div id="detail_container">
+        <div class="active">영화1의 상세내용</div>
+        <div>영화2의 상세내용</div>
+        <div>영화3의 상세내용</div>
+        <div>영화4의 상세내용</div>
+    </div>
+    <div>
+        <input type="text" id="comment"><input type="button" id="add" value="추가">
+    </div>
+    <div id="list"></div>
+</body>
+</html>
