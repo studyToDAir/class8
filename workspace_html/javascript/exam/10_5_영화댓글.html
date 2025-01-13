@@ -51,6 +51,8 @@
                 comment.value = ''
 
                 let div = document.createElement('div')     // <div></div>
+
+
                 div.innerHTML = '<div class="origin">'
                     + '    <span class="text">'+ value +'</span>'
                     + '    <input type="button" class="del" value="삭제">'
@@ -62,6 +64,19 @@
                     + '    <input type="button" class="confirm" value="확인">'
                     + '    <input type="button" class="cancel" value="취소">'
                     + '</div>'
+
+                // div.innerHTML = `
+                //     <div class="origin">    
+                //         <span class="text">${value}</span>    
+                //         <input type="button" class="del" value="삭제">    
+                //         <input type="button" class="modify" value="수정">
+                //     </div>
+                //     <div class="child hide">    
+                //         <input type="text" class="modify_text">    
+                //         <input type="button" class="confirm" value="확인">    
+                //         <input type="button" class="cancel" value="취소">
+                //     </div>
+                // `
                 // 삭제 전략2 :
                 // 댓글을 추가하기 전에
                 // 이벤트를 적용하기
@@ -108,7 +123,13 @@
 
     </script>
 </head>
+
 <body>
+
+
+
+
+
     <!--
         1. 영화 종류 보여주기
         2. 영화 상세 내용 보여주기
