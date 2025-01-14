@@ -1,110 +1,250 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
         // window.onload = ()=>{}
-        window.addEventListener('load', function(){
+        window.addEventListener('load', function () {
             document.querySelector('#btn1')
-            .addEventListener('click', function(){
-    
-                // ajax 객체 생성
-                // 반송 택배 기사 고용
-                const xhr = new XMLHttpRequest();
-                console.log(1, xhr.responseText)
-                // 보낼 준비
-                // 택배 기사님께 주소와 방식 알려줌
-                // xhr.open('get', 'http://daum.net');
-                // xhr.open('get', 'http://127.0.0.1:5500/javascript/11_json.html');
-                xhr.open('get', 'https://jsonplaceholder.typicode.com/users');
-                // 보내기
-                // 기사님 출발
-                xhr.send();
-    
-                // 다녀온 뒤
-                xhr.onload = function(){
-                    console.log('다녀왔습니다');
-                    // xhr.responseText : 수거한 내용이 담겨있음
-                    console.log(xhr.responseText)
-    
-                    const data = JSON.parse(xhr.responseText)
-                    console.log(data)
-                    // 첫번째 사람의
-                    console.log(data[0])
-                    // username 출력
-                    console.log(data[0].username)
-                    console.log(data[0]['username'])
-                    // lat 출력
-                    console.log(data[0].address.geo.lat)
-    
-                }
-    
-            })
+                .addEventListener('click', function () {
+
+                    // ajax 객체 생성
+                    // 반송 택배 기사 고용
+                    const xhr = new XMLHttpRequest();
+                    console.log(1, xhr.responseText)
+                    // 보낼 준비
+                    // 택배 기사님께 주소와 방식 알려줌
+                    // xhr.open('get', 'http://daum.net');
+                    // xhr.open('get', 'http://127.0.0.1:5500/javascript/11_json.html');
+                    xhr.open('get', 'https://jsonplaceholder.typicode.com/users');
+                    // 보내기
+                    // 기사님 출발
+                    xhr.send();
+
+                    // 다녀온 뒤
+                    xhr.onload = function () {
+                        console.log('다녀왔습니다');
+                        // xhr.responseText : 수거한 내용이 담겨있음
+                        console.log(xhr.responseText)
+
+                        const data = JSON.parse(xhr.responseText)
+                        console.log(data)
+                        // 첫번째 사람의
+                        console.log(data[0])
+                        // username 출력
+                        console.log(data[0].username)
+                        console.log(data[0]['username'])
+                        // lat 출력
+                        console.log(data[0].address.geo.lat)
+
+                    }
+
+                })
 
 
             document.querySelector('#btn2')
-            .addEventListener('click', function(){
-    
-                const xhr = new XMLHttpRequest();
-                xhr.open('get', 'https://cors-anywhere.herokuapp.com/https://polling.finance.naver.com/api/realtime?query=SERVICE_ITEM:034220|SERVICE_RECENT_ITEM:034220,005930,089590&_callback=window.__jindo2_callback._6320');
-                xhr.send();
-                xhr.onload = function(){
-                    console.log('다녀왔습니다');
-                    console.log(xhr.responseText)
-                }
-    
-            })
+                .addEventListener('click', function () {
+
+                    const xhr = new XMLHttpRequest();
+                    // xhr.open('get', 'https://cors-anywhere.herokuapp.com/https://polling.finance.naver.com/api/realtime?query=SERVICE_ITEM:034220|SERVICE_RECENT_ITEM:034220,005930,089590&_callback=window.__jindo2_callback._6320');
+                    xhr.open('get', 'https://crix-api-cdn.upbit.com/v1/crix/candles/minutes/30?code=CRIX.UPBIT.KRW-BTC&count=2&to=2025-01-14T00%3A37%3A53Z&timestamp=1736815111547');
+                    xhr.send();
+                    xhr.onload = function () {
+                        console.log('다녀왔습니다');
+                        console.log(xhr.responseText)
+                    }
+
+                })
 
             document.querySelector('#btn3')
-            .addEventListener('click', function(){
-    
-                const xhr = new XMLHttpRequest();
+                .addEventListener('click', function () {
 
-                // get 방식의 전달인자 보내기
-                // 이런 주소가 있을때 "서버ip:port/주소"
-                // 주소?키=벨류&key=value&key2=value2
-                let url = 'http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtFcst'
-                url += '?'
-                url += 'serviceKey=qVTaW2lslPLGXY2uHKVY3Vuc66ZQmC950RmMKYEg4Grvfz%2FeYbsd%2Fp4F0CzdQQwC26aBf2fTEHW76VU0OA04RQ%3D%3D'
-                url += '&'
-                url += 'dataType='+'JSON'
-                url += '&'
-                url += 'base_date='+'20250113'
-                url += '&'
-                url += 'base_time='+'1600'
-                url += '&'
-                url += 'nx='+'63'
-                url += '&'
-                url += 'ny='+'110'
-                url += '&'
-                url += 'numOfRows='+'1000'
-                console.log(url)
-                
-                xhr.open('get', url);
-                xhr.send();
-                xhr.onload = function(){
-                    console.log('다녀왔습니다');
-                    console.log(xhr.responseText)
-    
-                    let data = JSON.parse(xhr.responseText)
-                    console.log(data)
+                    const xhr = new XMLHttpRequest();
 
-                    // 3시간 분량의
-                    // 시간, 기온, 강수량, 습도
-                    //       T1H, RN1   , REH
+                    // get 방식의 전달인자 보내기
+                    // 이런 주소가 있을때 "서버ip:port/주소"
+                    // 주소?키=벨류&key=value&key2=value2
+                    let url = 'http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtFcst'
+                    url += '?'
+                    url += 'serviceKey=qVTaW2lslPLGXY2uHKVY3Vuc66ZQmC950RmMKYEg4Grvfz%2FeYbsd%2Fp4F0CzdQQwC26aBf2fTEHW76VU0OA04RQ%3D%3D'
+                    url += '&'
+                    url += 'dataType=' + 'JSON'
+                    url += '&'
+                    url += 'base_date=' + '20250114'
+                    url += '&'
+                    url += 'base_time=' + '0933'
+                    url += '&'
+                    url += 'nx=' + '63'
+                    url += '&'
+                    url += 'ny=' + '110'
+                    url += '&'
+                    url += 'numOfRows=' + '1000'
+                    console.log(url)
 
-                    // form으로 먼저 실습
-                }
-    
-            })
+                    xhr.open('get', url);
+                    xhr.send();
+                    xhr.onload = function () {
+                        // console.log(xhr.responseText)
+
+                        let data = JSON.parse(xhr.responseText)
+                        // console.log(data)
+                        // console.log(data.response)
+                        // console.log(data.response.body.items.item)
+                        let item = data.response.body.items.item
+                        // console.log(item.length)
+                        // console.log(item[0])
+                        // console.log(item[0].category)
+                        // console.log(item[0].fcstDate)
+                        // console.log(item[0].fcstTime)
+                        // console.log(item[0].fcstValue)
+                        for (let i = 0; i < item.length; i++) {
+                            // let obj = item[i];
+                            if (item[i].category == 'T1H') {
+                                console.log(`
+                                    category:${item[i].category},
+                                    fcstDate:${item[i].fcstDate},
+                                    fcstTime:${item[i].fcstTime},
+                                    fcstValue:${item[i].fcstValue},
+                                `)
+                            }
+                        }
+
+                        // 배열 방법으로 풀이
+                        let item2 = item.filter(function(obj){
+                            if(obj.category == 'T1H' 
+                                || obj.category == 'RN1' 
+                                || obj.category == 'REH' 
+                                ){
+                                return true
+                            }
+                            return false
+                        })
+                        console.log(item2)
+                        let item3 = item2.sort(function(before, after){
+                            return before.fcstTime - after.fcstTime
+                        })
+                        console.log(item3)
+
+                        /////////////////////////////////
+                        // json을 사용해보잣!
+                        let result = {}
+                        /*
+                            result = {
+                                1100 : {
+                                    T1H : 3,
+                                    RN1 : 강수없음,
+                                    REH : 30
+                                },
+                                1200 : {
+                                    T1H : 4,
+                                    RN1 : 강수없음,
+                                    REH : 40
+                                }
+                            }
+
+                            result['1900'] = {}
+                            result['1900']['T1H'] = 3
+                        */
+                        for(let i=0; i<item.length; i++){
+                            if(item[i].category == 'T1H' ){
+                                // console.log(result[item[i].fcstTime])
+                                // if(result[item[i].fcstTime] == undefined){
+                                if(!result[item[i].fcstTime]){
+                                    result[item[i].fcstTime] = {}
+                                }
+                                result[item[i].fcstTime][item[i].category] = item[i].fcstValue
+                            } else if(item[i].category == 'RN1' ){
+                                if(!result[item[i].fcstTime]){
+                                    result[item[i].fcstTime] = {}
+                                }
+                                result[item[i].fcstTime][item[i].category] = item[i].fcstValue
+                            } else if(item[i].category == 'REH' ){
+                                if(!result[item[i].fcstTime]){
+                                    result[item[i].fcstTime] = {}
+                                }
+                                result[item[i].fcstTime][item[i].category] = item[i].fcstValue
+                            }
+                        }
+                        console.log('result', result)
+
+
+
+                        // 3시간 분량의
+                        // 시간, 기온, 강수량, 습도
+                        //       T1H, RN1   , REH
+
+                        // form으로 먼저 실습
+                    }
+
+                })
+
+
+                document.querySelector('#btn4')
+                .addEventListener('click', function () {
+                    // const url = 'https://jsonplaceholder.typicode.com/users'
+                    const url = 'https://polling.finance.naver.com/api/realtime?query=SERVICE_ITEM:034220|SERVICE_RECENT_ITEM:034220,005930,089590&_callback=window.__jindo2_callback._6320'
+                    let option = {
+                        method: 'get',
+                        headers: {
+                            'key': 'value'
+                        },
+                        credentials: "include"
+                        // body: '{a:123}' 
+                    }
+
+                    console.log(1)
+                    fetch(url, option)
+                    .then(function(response){
+                        console.log(2)
+                        // response : fetch가 돌려준 응답 객체
+                        return response.json()
+                    }).then(function(data){
+                        console.log(data)
+                    }).catch(function(error){
+                        console.log(error)
+                    })
+                    console.log(3)
+                })
         })
+
+        let j = {}
+        j.열시 = 1
+        /*
+            {
+                열시: 1
+            }
+        */
+        j.열시 = 2
+        /*
+            {
+                열시: 2
+            }
+        */
+        // j['1100'] = {
+        //     온도: value,
+        //     습도: value
+        // }
+        console.log(j)
+
+        ajax('url')
+        function ajax(url, method='get', cb){
+            const xhr = new XMLHttpRequest();
+            xhr.open(method, url);
+            xhr.send();
+            xhr.onload = cb
+        }
+
     </script>
 </head>
+
 <body>
     <button type="button" id="btn1">ajax 실행</button>
     <button type="button" id="btn2">lg 디스플레이 실시간 주가</button>
     <button type="button" id="btn3">날씨</button>
+    <button type="button" id="btn4">fetch</button>
 </body>
+
 </html>
