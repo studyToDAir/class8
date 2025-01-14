@@ -3,6 +3,9 @@ const express = require('express');
 const http = require('http')
 const appRoot = require('app-root-path').path
 const bodyParser = require('body-parser')
+const ws = require('ws')
+
+global.k = 1
 
 function start(port=6000){
     // if(port == undefined)
@@ -11,9 +14,30 @@ function start(port=6000){
     // }
 
     const app = express();
-    http.createServer(app).listen(port, ()=>{
+    const httpServer = http.createServer(app)
+    const webServer = httpServer.listen(port, ()=>{
         console.log('web server START!! port:', port)
     })
+
+    const websocket = new ws.Server({
+        server: webServer
+    })
+    websocket.on('connection', function(sock, request){
+
+        sock.on('message', function(msg){
+            console.log("받은 메세지", ""+msg)
+
+            websocket.clients.forEach(function(client){
+                client.send(msg.toString())
+            })
+
+        })
+
+    })
+
+
+
+
 
     app.set('view engine', 'ejs')
     app.set('views', appRoot+'/view')

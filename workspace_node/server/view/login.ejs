@@ -15,5 +15,25 @@
         id: <input type="text" name="id"><br>
         <input type="submit" value="로그인get">
     </form>
+
+    <input type="text" id="text"><input type="button" id="btn" value="보내기">
+    <div id="list"></div>
+
+    <script>
+        const ws = new WebSocket('ws://192.168.0.122:50000')
+
+        ws.onopen = function(){
+            console.log('웹소켓 서버 접속 완료')
+        }
+        ws.onmessage = function(event){
+            console.log(event.data)
+            document.querySelector('#list').innerHTML += '<br>'+event.data
+        }
+
+        document.querySelector('#btn').addEventListener('click', function(){
+            let text = document.querySelector('#text').value
+            ws.send(text)
+        })
+    </script>
 </body>
 </html>
