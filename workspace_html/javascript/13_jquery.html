@@ -138,6 +138,10 @@
 
             $('#btn1').click()
             // $('#btn1').trigger('click')
+
+            $('#btn3').on('click', function(){
+                $('#section').fadeToggle()
+            })
         }
 
     </script>
@@ -163,5 +167,9 @@
     </div>
     <input type="button" class="btn" id="btn1" value="버튼1">
     <input type="button" class="btn" id="btn2" value="버튼2">
+    <br>
+    <input type="button" class="btn" id="btn3" value="확장">
+    <div id="section" style="border:1px solid black; background: yellow; height: 100px;"></div>
+
 </body>
 </html>
