@@ -60,6 +60,7 @@
 
                 })
 
+
             document.querySelector('#btn3')
                 .addEventListener('click', function () {
 
@@ -114,17 +115,17 @@
                         }
 
                         // 배열 방법으로 풀이
-                        let item2 = item.filter(function(obj){
-                            if(obj.category == 'T1H' 
-                                || obj.category == 'RN1' 
-                                || obj.category == 'REH' 
-                                ){
+                        let item2 = item.filter(function (obj) {
+                            if (obj.category == 'T1H'
+                                || obj.category == 'RN1'
+                                || obj.category == 'REH'
+                            ) {
                                 return true
                             }
                             return false
                         })
                         console.log(item2)
-                        let item3 = item2.sort(function(before, after){
+                        let item3 = item2.sort(function (before, after) {
                             return before.fcstTime - after.fcstTime
                         })
                         console.log(item3)
@@ -149,21 +150,21 @@
                             result['1900'] = {}
                             result['1900']['T1H'] = 3
                         */
-                        for(let i=0; i<item.length; i++){
-                            if(item[i].category == 'T1H' ){
+                        for (let i = 0; i < item.length; i++) {
+                            if (item[i].category == 'T1H') {
                                 // console.log(result[item[i].fcstTime])
                                 // if(result[item[i].fcstTime] == undefined){
-                                if(!result[item[i].fcstTime]){
+                                if (!result[item[i].fcstTime]) {
                                     result[item[i].fcstTime] = {}
                                 }
                                 result[item[i].fcstTime][item[i].category] = item[i].fcstValue
-                            } else if(item[i].category == 'RN1' ){
-                                if(!result[item[i].fcstTime]){
+                            } else if (item[i].category == 'RN1') {
+                                if (!result[item[i].fcstTime]) {
                                     result[item[i].fcstTime] = {}
                                 }
                                 result[item[i].fcstTime][item[i].category] = item[i].fcstValue
-                            } else if(item[i].category == 'REH' ){
-                                if(!result[item[i].fcstTime]){
+                            } else if (item[i].category == 'REH') {
+                                if (!result[item[i].fcstTime]) {
                                     result[item[i].fcstTime] = {}
                                 }
                                 result[item[i].fcstTime][item[i].category] = item[i].fcstValue
@@ -183,7 +184,7 @@
                 })
 
 
-                document.querySelector('#btn4')
+            document.querySelector('#btn4')
                 .addEventListener('click', function () {
                     // const url = 'https://jsonplaceholder.typicode.com/users'
                     const url = 'https://polling.finance.naver.com/api/realtime?query=SERVICE_ITEM:034220|SERVICE_RECENT_ITEM:034220,005930,089590&_callback=window.__jindo2_callback._6320'
@@ -198,60 +199,83 @@
 
                     console.log(1)
                     fetch(url, option)
-                    .then(function(response){
-                        console.log(2)
-                        // response : fetch가 돌려준 응답 객체
-                        return response.json()
-                    }).then(function(data){
-                        console.log(data)
-                    }).catch(function(error){
-                        console.log(error)
-                    })
+                        .then(function (response) {
+                            console.log(2)
+                            // response : fetch가 돌려준 응답 객체
+                            return response.json()
+                        }).then(function (data) {
+                            console.log(data)
+                        }).catch(function (error) {
+                            console.log(error)
+                        })
                     console.log(3)
                 })
 
 
-                $('#btn5').off('click').on('click', function(){
-                    $.ajax({
-                        url: 'https://jsonplaceholder.typicode.com/users',  // 주소
-                        type: 'get',    // method
-                        success: function(data){
-                            // 다녀오기 성공
-                            console.log('성공')
-                            console.log(data)
-                        },
-                        error : function(data2){
-                            console.log('실패')
-                            console.log(data2)
-                        },
-                        complete : function(){
-                            console.log('무조건 실행')
-                        }
-                    })
-                })
-
-                try{
-                    // 강제 에러 발생
-                    console.log(abc)
-                } catch(errorMsg){
-                    console.log(errorMsg)
-                }
-
-                $('#btn6').off('click').on('click', function(){
-                    $.ajax({
-                        url: 'https://jsonplaceholder.typicode.com/users',  // 주소
-                        type: 'get',    // method
-                    }).done(function(data){
+            $('#btn5').off('click').on('click', function () {
+                $.ajax({
+                    url: 'https://jsonplaceholder.typicode.com/users',  // 주소
+                    type: 'get',    // method
+                    success: function (data) {
                         // 다녀오기 성공
                         console.log('성공')
                         console.log(data)
-                    }).fail(function(data2){
+                    },
+                    error: function (data2) {
                         console.log('실패')
                         console.log(data2)
-                    }).always(function(){
+                    },
+                    complete: function () {
                         console.log('무조건 실행')
-                    })
+                    }
                 })
+            })
+
+            try {
+                // 강제 에러 발생
+                console.log(abc)
+            } catch (errorMsg) {
+                console.log(errorMsg)
+            }
+
+            $('#btn6').off('click').on('click', function () {
+                $.ajax({
+                    url: 'https://jsonplaceholder.typicode.com/users',  // 주소
+                    type: 'get',    // method
+                }).done(function (data) {
+                    // 다녀오기 성공
+                    console.log('성공')
+                    console.log(data)
+                }).fail(function (data2) {
+                    console.log('실패')
+                    console.log(data2)
+                }).always(function () {
+                    console.log('무조건 실행')
+                })
+            })
+
+            document.querySelector('#btn7')
+                .addEventListener('click', function () {
+
+                    // debugger
+                    const xhr = new XMLHttpRequest();
+                    xhr.open('post', 'https://discord.com/api/webhooks/1329291572021563516/8it-qFDir8j5DZ2uxuQy3vZxN2ik4kTs_kHgeumYkd2Qwc5ruHq-KCmBxWAuEJ7EVywx?wait=true');
+                    xhr.setRequestHeader('Content-Type', 'application/json')
+
+                    let param = {
+                        username: 'webHook', // 1~80자
+                        content: 'test', // 2000자
+                        tts: true
+                    }
+                    xhr.send(JSON.stringify(param));
+
+                    xhr.onload = function () {
+                        console.log('다녀왔습니다');
+                        console.log(xhr.responseText)
+                    }
+
+                })
+
         })
 
         let j = {}
@@ -274,7 +298,7 @@
         console.log(j)
 
         ajax('url')
-        function ajax(url, method='get', cb){
+        function ajax(url, method = 'get', cb) {
             const xhr = new XMLHttpRequest();
             xhr.open(method, url);
             xhr.send();
@@ -291,6 +315,8 @@
     <button type="button" id="btn4">fetch</button>
     <button type="button" id="btn5">jQuery ajax 1</button>
     <button type="button" id="btn6">jQuery ajax 2</button>
+    <button type="button" id="btn7">디스코드</button>
+
 </body>
 
 </html>
