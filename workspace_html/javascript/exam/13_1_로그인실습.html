@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            document.querySelector('#login').addEventListener('click', function () {
+                const xhr = new XMLHttpRequest();
+                xhr.open('get', './emp.json')
+                xhr.send()
+                xhr.onload = function () {
+                    // console.log(xhr.responseText)
+                    const emp = JSON.parse(xhr.responseText)
+                    // console.log(emp)
+
+                    const empno = document.querySelector('#empno').value
+                    const ename = document.querySelector('#ename').value
+
+                    // // 반복하면서
+                    // // 아뒤 비번이 동일한 사람 찾기
+                    // // 찾으면 '환영'
+                    // // 없으면 '회원가입'
+                    // // 문제: 계속 alert 동작
+                    // let flag = false
+                    // for (let i = 0; i < emp.length; i++) {
+                    //     if (emp[i].empno == empno && emp[i].ename == ename) {
+                    //         flag = true
+                    //     }
+                    // }
+
+                    // if (flag) {
+                    //     alert(`환영합니다 ${ename}님`)
+                    // } else {
+                    //     alert('회원이 아닙니다')
+                    // }
+
+                    // filter를 통해서
+                    // 아뒤,비번 동일한 것만 true
+                    let filtered = emp.filter(function(p){
+                        if (p.empno == empno && p.ename == ename){
+                            return true
+                        }
+                    })
+                    // console.log(filtered)
+                    if(filtered.length != 0){
+                        alert(`환영합니다 ${filtered[0].ename}님`)
+                    }else {
+                        alert('회원이 아닙니다')
+                    }
+                }
+            })
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <!--
+        사원번호empno, 이름ename을 입력하고
+        로그인 버튼을 누르면
+        emp.json안에 있는 회원인지 검사하고
+        회원이 맞으면 alert('환영합니다 누구님')
+        회원이 아니면 alert('회원이 아닙니다')
+    -->
+    empno : <input type="text" id="empno"><br>
+    ename : <input type="text" id="ename"><br>
+    <input type="button" id="login" value="로그인">
+</body>
+
+</html>
