@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--
+        https://apis.map.kakao.com/web/guide/
+        
+        https://developers.kakao.com/ 가입
+        내 어플리케이션
+        어플리케이션 추가하기 - 대강 쓰고
+        추가된 어플리케이션 들어가서
+        앱 키 복사
+        플래폼 선택 > web > http://127.0.0.1
+        카카오맵 선택 > 활성화
+
+    -->
+    <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=32420e4ebd3ee3365697b5c8e18762bf"></script>
+    <!--위 주소꺼 인식을 잘 못해서 다운받아서 실행하기 위해 아래 코드 사용-->
+    <script src="sdk.js"></script>
+    <script>
+        window.onload = function () {
+            init_map();
+        }
+        function init_map() {
+            var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+            var options = { //지도를 생성할 때 필요한 기본 옵션
+                center: new kakao.maps.LatLng(36.807209, 127.147121), //지도의 중심좌표.
+                level: 3 //지도의 레벨(확대, 축소 정도)
+            };
+
+            var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+
+            // 아래와 같이 옵션을 입력하지 않아도 된다
+            var zoomControl = new kakao.maps.ZoomControl();
+
+            // 지도 오른쪽에 줌 컨트롤이 표시되도록 지도에 컨트롤을 추가한다.
+            map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+
+            var rv = new kakao.maps.Roadview(rvContainer); 
+        }
+    </script>
+</head>
+
+<body>
+    <div id="map" style="width:500px;height:400px;"></div>
+</body>
+
+</html>

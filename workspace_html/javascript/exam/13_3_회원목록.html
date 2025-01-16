@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table border=1>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>zipcode</th>
+                <th>회사이름</th>
+            </tr>
+        </thead>
+        <tbody id="list">
+        </tbody>
+    </table>
+
+    <script>
+        const xhr = new XMLHttpRequest();
+        xhr.open('get', 'https://jsonplaceholder.typicode.com/users');
+        xhr.send();
+        xhr.onload = function () {
+            console.log('다녀왔습니다');
+            console.log(xhr.responseText)
+            let data = JSON.parse(xhr.responseText)
+
+            for(let i=0; i<data.length; i++){
+                let tr = document.createElement('tr')
+                let html = `
+                    <td>${data[i].id}</td>
+                    <td>${data[i].name}</td>
+                    <td>${data[i].address.zipcode}</td>
+                    <td>${data[i].company.name}</td>
+                `
+                tr.innerHTML = html
+    
+                const tbody = document.querySelector('#list')
+                tbody.append(tr)
+            }
+
+        }
+
+
+    </script>
+</body>
+
+</html>
