@@ -506,6 +506,8 @@ public class IfExam {
 		} else {
 			System.out.println("오류 상황");
 		}
+		
+		System.out.println(10 & 12);
 	}
 
 }
