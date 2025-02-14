@@ -33,8 +33,23 @@ public class AnimalExam {
 		Dog dog = new Dog();
 //		catMom(dog);
 		Animal a6 = (Animal)cat;
+		System.out.println("a6 == cat : "+ (a6 == cat));
+		System.out.println(a6);
+		System.out.println(cat);
 		feed(a6);
 		feed(dog);
+		
+		a6.age = 3;
+		feed(a6);
+		
+		// 이번엔 Cat에 필드 int age를 추가
+		a6.age = 4;
+		feed(a6);
+		
+		Cat cat2 = new Cat();
+		cat2.age = 5;
+		cat2.setAge(50);
+		feed(cat2);
 	}
 
 	static void catMom(Cat cat) {
@@ -47,5 +62,6 @@ public class AnimalExam {
 		System.out.println("                          feed 실행");
 		animal.eat();
 		animal.sound();
+		System.out.println("나이는 : "+ animal.age);
 	}
 }
