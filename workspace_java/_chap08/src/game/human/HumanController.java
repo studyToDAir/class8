@@ -1,7 +1,13 @@
 package game.human;
 
+
 public class HumanController {
 
+
+	class Test{
+		
+	}
+	
 	public static void main(String[] args) {
 		
 		String id = "admin";
@@ -11,7 +17,7 @@ public class HumanController {
 		dto.setId(id);
 		dto.setPw(pw);
 
-		HumanService service = new HumanServiceImpl();
+		HumanServiceImpl service = new HumanServiceImpl();
 //		HumanDTO dto2 = service.getMember(dto);
 		dto = service.getMember(dto);
 		
@@ -26,3 +32,5 @@ public class HumanController {
 	}
 
 }
+
+
