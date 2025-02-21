@@ -16,6 +16,15 @@ public class HumanController {
 		HumanDTO dto = new HumanDTO();
 		dto.setId(id);
 		dto.setPw(pw);
+		
+		HumanDTO dto2 = new HumanDTO();
+		dto2.setId(id);
+		dto2.setPw(pw);
+		
+		if(dto.equals(dto2)) {
+			
+		}
+
 
 		HumanServiceImpl service = new HumanServiceImpl();
 //		HumanDTO dto2 = service.getMember(dto);

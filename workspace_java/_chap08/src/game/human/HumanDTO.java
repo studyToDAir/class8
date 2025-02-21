@@ -32,5 +32,16 @@ public class HumanDTO {
 		this.age = age;
 	}
 	
+//	@Override
+//	public boolean equals(Object obj) {
+//		HumanDTO that = (HumanDTO)obj;
+//		if(this.id.equals(that.id) 
+//				&& this.pw.equals(that.pw)) {
+//			return true;
+//		} else {
+//			return false;
+//		}
+//	}
+	
 	
 }

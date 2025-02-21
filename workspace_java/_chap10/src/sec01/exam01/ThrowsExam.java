@@ -58,7 +58,7 @@ public class ThrowsExam {
 		// close() 자동 실행
 		// Closeable 인터페이스가 있는 클래스만 넣을 수 있습니다.
 		try(
-//				String s = "";
+//				String s = "";// Closeable을 상속 받지 않은 클래스
 			FileInputStream fis2 = new FileInputStream("c:\\text.txt");
 		){
 			System.out.println(fis2);
