@@ -81,9 +81,6 @@ public class DbServlet extends HttpServlet {
 				list.add(empDTO);
 			}
 			
-//			Map map = list.get(0);
-			EmpDTO map = list.get(0);
-			
 			// View
 			
 			
