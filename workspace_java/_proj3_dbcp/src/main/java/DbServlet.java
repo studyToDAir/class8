@@ -24,7 +24,7 @@ import kr.or.human.dto.EmpDTO;
 
 @WebServlet("/db")
 public class DbServlet extends HttpServlet {
-       
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("/db doGet 실행");
 		
