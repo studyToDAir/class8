@@ -48,7 +48,7 @@ public class IpServlet extends HttpServlet {
 		// Context path까지와 쿼리스트링 제외한 주소
 		System.out.println("getServletPath : "+ request.getServletPath());
 		
-		// 쿼리스트링
+		// 쿼리스트링만 가져오기
 		System.out.println("getQueryString : "+ request.getQueryString());
 		
 	}

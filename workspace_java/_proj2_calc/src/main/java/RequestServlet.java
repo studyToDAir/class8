@@ -20,10 +20,7 @@ public class RequestServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("/req doGet실행");
 		
-		// 요청 내용의 한글 깨짐 방지
 		request.setCharacterEncoding("utf-8");
-		
-		// 응답 내용의 한글 깨짐 방지
 		response.setContentType("text/html; charset=utf-8");
 		
 		// getParameter

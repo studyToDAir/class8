@@ -36,4 +36,15 @@
 		maxTotal="50"
      	maxWaitMillis="-1"
     />
+    <Resource
+	    name="jdbc/team"
+	    auth="container"
+	    type="javax.sql.DataSource"
+	    driverClassName="oracle.jdbc.driver.OracleDriver"
+	    url="jdbc:oracle:thin:@125.181.132.133:51521:xe"
+	    username="team"
+	    password="tiger"
+		maxTotal="50"
+     	maxWaitMillis="-1"
+    />
 </Context>

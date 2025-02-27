@@ -1,6 +1,7 @@
 
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -82,8 +83,26 @@ public class DbServlet extends HttpServlet {
 			}
 			
 			// View
+			PrintWriter out = response.getWriter();
+			out.println("<table border='1'>"); 
+			out.println("    <tr>");
+			out.println("        <th>empno</th>");
+			out.println("        <th>ename</th>");
+			out.println("        <th>hiredate</th>");
+			out.println("    </tr>");
 			
+			for(int i=0; i<list.size(); i++) {
+				EmpDTO dto = list.get(i);
+				out.println("    <tr>");
+				out.println("        <td>"+ dto.getEmpno() +"</td>");
+				out.println("        <td>"+ dto.getEname() +"</td>");
+				out.println("        <td>"+ dto.getHiredate() +"</td>");
+				out.println("    </tr>");
+			}
+			out.println("</table>");
 			
+			// 커넥션풀로 반환
+			con.close();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
