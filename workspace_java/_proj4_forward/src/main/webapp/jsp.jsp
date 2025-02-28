@@ -80,6 +80,12 @@ for(int i=1; i<=9; i++){
 <%= text %>
 <%= request.getParameter("text") %>
 
+<hr>
+<!-- 액션태그 -->
+<jsp:include page="header.jsp" >
+	<jsp:param value="minsu" name="id"/>
+</jsp:include>
+
 
 <script>
 	let a = '<%= a %>'
