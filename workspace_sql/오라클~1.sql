@@ -1575,3 +1575,30 @@ create table emp_ck (
 
 desc emp;
 desc dept;
+
+
+create table todo (
+    todo_id number primary key,
+    todo varchar2(4000) not null,
+    create_date date not null,
+    modify_date date,
+    done char(1) not null
+);
+
+create sequence seq_todo;
+
+select * from todo;
+
+drop table todo;
+drop sequence seq_todo;
+
+insert into todo
+values ( seq_todo.nextval, 'test', sysdate, null, 'N' );
+
+select * from todo;
+commit;
+
+update todo set done = 'Y' where todo_id = 4
+;
+
+
