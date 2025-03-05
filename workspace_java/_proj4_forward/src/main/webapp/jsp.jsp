@@ -83,7 +83,7 @@ for(int i=1; i<=9; i++){
 <hr>
 <!-- 액션태그 -->
 <jsp:include page="header.jsp" >
-	<jsp:param value="minsu" name="id"/>
+	<jsp:param name="id" value="minsu"/>
 </jsp:include>
 
 

@@ -20,7 +20,7 @@ public class SetCookie extends HttpServlet {
 		Cookie c1 = new Cookie("key", "value");
 //		c1.setMaxAge(60*60*24); // 초 단위
 		c1.setMaxAge(10); // 초 단위
-		response.addCookie(c1);
+		response.addCookie(c1); // response에 담아서 브라우저에 전송하면 알아서 저장 함
 		
 		// 만료일이 없는 세션쿠키 만들기
 		Cookie c2 = new Cookie("name", "value2");
