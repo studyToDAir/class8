@@ -162,7 +162,8 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="_proj1_hello" path="/_proj1_hello" reloadable="true" source="org.eclipse.jst.jee.server:_proj1_hello"/><Context docBase="_proj2_calc" path="/_proj2_calc" reloadable="true" source="org.eclipse.jst.jee.server:_proj2_calc"/><Context docBase="_proj3_dbcp" path="/_proj3_dbcp" reloadable="true" source="org.eclipse.jst.jee.server:_proj3_dbcp"/><Context docBase="_proj4_forward" path="/_proj4_forward" reloadable="true" source="org.eclipse.jst.jee.server:_proj4_forward"/><Context docBase="_proj5_todo" path="/_proj5_todo" reloadable="true" source="org.eclipse.jst.jee.server:_proj5_todo"/><Context docBase="_proj6_cookie_session" path="/_proj6_cookie_session" reloadable="true" source="org.eclipse.jst.jee.server:_proj6_cookie_session"/><Context docBase="_proj7_file" path="/_proj7_file" reloadable="true" source="org.eclipse.jst.jee.server:_proj7_file"/></Host>
+      
+      <Context docBase="_spring3_model" path="/human3" reloadable="true" source="org.eclipse.jst.jee.server:_spring3_model"/></Host>
     </Engine>
   </Service>
 </Server>

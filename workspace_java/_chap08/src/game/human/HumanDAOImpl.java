@@ -2,8 +2,7 @@ package game.human;
 
 import java.io.PrintStream;
 
-public class HumanDAOImpl 
-	implements HumanDAO {
+public class HumanDAOImpl implements HumanDAO {
 
 	String id = "admin";
 	String pw = "1234";
