@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+<!-- tag(또는 node)의 순서에 주의 -->
+
+	<!-- 전달인자로 null 줄 수 있음 -->
+    <settings>
+        <setting name="jdbcTypeForNull" value="NULL" />
+    </settings>
+
+
+</configuration>

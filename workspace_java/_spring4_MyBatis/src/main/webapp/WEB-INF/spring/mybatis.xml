@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans">
+
+	<!-- jdbc.properties 파일 로딩 -->
+	<bean id="propertyPlaceholderConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<value>/WEB-INF/config/jdbc/jdbc.properties</value>
+		</property>
+	</bean>
+	
+	<!-- DB 접속 -->
+	<bean id="dataSource" class="org.apache.ibatis.datasource.pooled.PooledDataSource">
+		<property name="driver" value="${jdbc.driverClassName}"></property>
+		<property name="url" value="${jdbc.url}"></property>
+		<property name="username" value="${jdbc.username}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+	</bean>
+
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="configLocation" value="classpath:mybatis/model/modelConfig.xml"></property>
+		<property name="mapperLocations" value="classpath:mybatis/mappers/*.xml"></property>
+	</bean>
+
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory"></constructor-arg>
+	</bean>
+
+<!-- 
+		1. new SqlSessionTemplate(  )
+		******************************
+		2. 
+		SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean()
+		sqlSessionFactory.setDataSource(   )
+		sqlSessionFactory.setConfigLocation( "classpath:mybatis/model/modelConfig.xml"  )
+		sqlSessionFactory.setMapperLocations( "classpath:mybatis/mappers/*.xml"  )
+		
+		new SqlSessionTemplate( sqlSessionFactory )
+		*********************************************
+		3.
+		PooledDataSource dataSource = new PooledDataSource()
+		dataSource.setUsername("scott")
+		
+		SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean()
+		sqlSessionFactory.setDataSource( dataSource  )
+		sqlSessionFactory.setConfigLocation( "classpath:mybatis/model/modelConfig.xml"  )
+		sqlSessionFactory.setMapperLocations( "classpath:mybatis/mappers/*.xml"  )
+		
+		new SqlSessionTemplate( sqlSessionFactory )
+ -->
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

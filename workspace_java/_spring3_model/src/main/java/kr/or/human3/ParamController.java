@@ -5,13 +5,17 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class LoginController {
+@RequestMapping("/ui")
+public class ParamController {
 
 	// 로그인 페이지 표시
 	@RequestMapping("/login.do")
@@ -28,6 +32,7 @@ public class LoginController {
 	
 	@RequestMapping("/login")
 	public ModelAndView login(HttpServletRequest request) {
+		System.out.println("/login");
 		
 //		ModelAndView mav = new ModelAndView();
 //		mav.setViewName("result");
@@ -92,8 +97,7 @@ public class LoginController {
 			// DTO타입의 앞글자만 소문자로 변경한 key로
 			// 모델에 넣어줌
 			// @ModelAttribute("memberDTO")
-			MemberDTO dto3,
-			MemberDTO dto4
+			MemberDTO dto3
 	) {
 		System.out.println("dto1 : "+ dto1);
 		
@@ -103,5 +107,100 @@ public class LoginController {
 //		mav.addObject("memberDTO", dto4);
 		return mav;
 	}
+	@RequestMapping("/login4")
+	public String login4() {
+		return "result";
+	}
+	@RequestMapping("/login5")
+	public String login5() {
+		return "redirect:login.do";
+	}
+	@RequestMapping("/login5_1")
+	public String login5_1() {
+		return "forward:login.do";
+	}
+	
+	@RequestMapping("/login6")
+	public String login6( Model model ) {
+		
+		model.addAttribute("id1", "model");
+		
+		return "result";
+	}
+	
+//	@RequestMapping("/result")
+	@RequestMapping("/result.human")
+	public void login7() {
+		// 리턴타입이 void 또는 리턴값이 null일때
+		// @RequestMapping의 주소 중 마지막 쩜 앞의 글씨를
+		// ViewResolver로 보냄
+	}
+	
+	@RequestMapping("/login8/{id}")
+	public String login8(
+			@PathVariable("id")
+			String id
+	) {
+		System.out.println("id : "+ id);
+		return "result";
+	}
+
+	@RequestMapping("/login9/{month}/add/{day}")
+	public String login9(
+			@PathVariable("month")	// 생략 불가능
+			String month,
+			
+			@PathVariable("day")
+			int d
+	) {
+		System.out.println("month : "+ month);
+		System.out.println("d : "+ d);
+		return "result";
+	}
+	
+	@RequestMapping("/login10")
+	public String login10() {
+		return "result";
+	}
+	
+	@RequestMapping(value="/login11", method=RequestMethod.GET)
+	public String login11() {
+		return "result";
+	}
+
+	@RequestMapping(value="/login12", method={RequestMethod.GET, RequestMethod.POST})
+	public String login12() {
+		return "result";
+	}
+
+	@RequestMapping(value={"/login13", "/login14"})
+	public String login13() {
+		System.out.println("13또는 14");
+		return "result";
+	}
+
+	@RequestMapping(value="/login15", method=RequestMethod.GET)
+	public String login15() {
+		System.out.println("15에 GET");
+		return "result";
+	}
+	
+	@RequestMapping(value="/login15", method=RequestMethod.POST)
+	public String login15_1() {
+		System.out.println("15에 POST");
+		return "result";
+	}
+	
+	@RequestMapping(value="/login16")
+	public String login16_1() {
+		System.out.println("15에 POST");
+		return "result";
+	}
+//	@RequestMapping(value="/login16")
+//	public String login16_2() {
+//		System.out.println("15에 POST");
+//		return "result";
+//	}
+	
 	
 }
