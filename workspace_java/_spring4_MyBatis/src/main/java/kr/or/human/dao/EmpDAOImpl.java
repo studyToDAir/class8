@@ -20,5 +20,25 @@ public class EmpDAOImpl implements EmpDAO {
 		System.out.println("result : "+ result);
 		return result;
 	}
+	
+	@Override
+	public EmpDTO selectOneEmp() {
+		EmpDTO dto = sqlSession.selectOne("mapper.emp.selectOneEmp");
+		System.out.println("dto: "+ dto);
+		return dto;
+	}
+	
+	@Override
+	public EmpDTO selectOneEmpno(int empno) {
+		EmpDTO dto = sqlSession.selectOne("mapper.emp.selectEmpno", empno);
+		System.out.println("dto: "+ dto);
+		return dto;
+	}
+	@Override
+	public EmpDTO selectOneEmpno2(EmpDTO empDTO) {
+		EmpDTO dto = sqlSession.selectOne("mapper.emp.selectEmpno2", empDTO);
+		System.out.println("EmpDAOImpl selectOneEmpno2: "+ dto);
+		return dto;
+	}
 
 }

@@ -11,5 +11,9 @@
         <setting name="jdbcTypeForNull" value="NULL" />
     </settings>
 
+	<!-- mapper에 사용할 타입이 길어서 짧게 별칭 지정 -->
+	<typeAliases>
+		<typeAlias type="kr.or.human.dto.EmpDTO" alias="empDTO" />
+	</typeAliases>
 
 </configuration>

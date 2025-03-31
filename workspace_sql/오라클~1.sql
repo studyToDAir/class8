@@ -1,4 +1,6 @@
 select * from emp;
+
+
 desc emp;
 
 select * from dept;
@@ -1605,6 +1607,14 @@ select * from emp2;
 
 create table emp2
 as select * from emp;
+
+-- KING
+-- ' or '1'='1
+select * from emp2
+where ename = '' or '1'='1';
+
+
+
 
 
 
