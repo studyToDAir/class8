@@ -54,4 +54,6 @@
 		where empno = #{empno}
 		
 	</select>
+	
+	<update></update>
 </mapper>

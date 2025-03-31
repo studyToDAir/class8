@@ -41,4 +41,10 @@ public class EmpDAOImpl implements EmpDAO {
 		return dto;
 	}
 
+	@Override
+	public EmpDTO updateEmp(EmpDTO empDTO) {
+		sqlSession.update("", empDTO);
+		return dto;
+	}
+
 }
