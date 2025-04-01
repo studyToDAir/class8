@@ -76,12 +76,11 @@ public class EmpController {
 //	public String modifyEmp(Model model) {
 //		// 실제로 update 실행하는 곳
 //	}
-	
+
 	@RequestMapping(value="/emp", method=RequestMethod.POST)
 	public String modifyEmp2(Model model,
 			@ModelAttribute EmpDTO empDTO
 	) {
-		// 실제 update
 		System.out.println(empDTO);
 		int countUpdate = empService.modifyEmp(empDTO);
 		System.out.println("없대요 : "+ countUpdate);
