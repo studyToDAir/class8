@@ -10,7 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<!-- <form method="put" action="emp"> -->
+<form method="post" action="emp">
 	<table border="1">
 		<tr>
 		    <th>empno</th>
@@ -18,25 +18,25 @@
 		</tr>
 		<tr>
 		    <th>ename</th>
-		    <td><input type="text" value="${dto.ename}"></td>
+		    <td><input type="text" name="ename" value="${dto.ename}"></td>
 		</tr>
 		<tr>
 		    <th>sal</th>
-		    <td><input type="text" value="${dto.sal}"></td>
+		    <td><input type="text" name="sal" value="${dto.sal}"></td>
 		</tr>
 		<tr>
 		    <th>comm</th>
-		    <td><input type="text" value="${dto.comm}"></td>
+		    <td><input type="text" name="comm" value="${dto.comm}"></td>
 		</tr>
 		<tr>
 		    <th>hiredate</th>
-		    <td><input type="date" value="${dto.hiredate}"></td>
+		    <td><input type="date" name="hiredate" value="${dto.hiredate}"></td>
 		</tr>
 	</table>
 	<input type="hidden" name="empno" value="${dto.empno}">
-<!-- 	<input type="submit" value="수정하기"> -->
-	<input type="button" id="modify" value="수정하기">
-<!-- </form> -->
+	<input type="submit" value="수정하기">
+<!-- 	<input type="button" id="modify" value="수정하기"> -->
+</form>
 
 <script>
 // 	const empno = '${dto.empno}'

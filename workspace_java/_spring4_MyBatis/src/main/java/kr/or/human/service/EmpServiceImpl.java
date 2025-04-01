@@ -38,4 +38,10 @@ public class EmpServiceImpl implements EmpService {
 		return dto;
 	}
 	
+	@Override
+	public int modifyEmp(EmpDTO empDTO) {
+		int countUpdate = empDAO.updateEmp(empDTO);
+		return countUpdate;
+	}
+	
 }

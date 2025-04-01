@@ -42,9 +42,16 @@ public class EmpDAOImpl implements EmpDAO {
 	}
 
 	@Override
-	public EmpDTO updateEmp(EmpDTO empDTO) {
-		sqlSession.update("", empDTO);
-		return dto;
+	public int updateEmp(EmpDTO empDTO) {
+		int countUpdate = -1;
+		
+		try {
+			countUpdate = sqlSession.update("mapper.emp.udpateEmp", empDTO);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return countUpdate;
 	}
 
 }

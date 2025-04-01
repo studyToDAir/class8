@@ -10,5 +10,6 @@ public interface EmpService {
 	public EmpDTO getEmpOne();
 	public EmpDTO getEmpno(int empno);
 	public EmpDTO getEmpno2(EmpDTO empDTO);
+	public int modifyEmp(EmpDTO empDTO);
 	
 }

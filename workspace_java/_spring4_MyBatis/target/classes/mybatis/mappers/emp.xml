@@ -55,5 +55,12 @@
 		
 	</select>
 	
-	<update></update>
+	<update id="udpateEmp" parameterType="empDTO">
+		update emp2
+		   set ename = #{ename},
+		       sal = #{sal},
+		       comm = #{comm},
+		       hiredate = #{hiredate}
+		 where empno = #{empno}
+	</update>
 </mapper>
