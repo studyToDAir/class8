@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -53,6 +54,7 @@ public class EmpController {
 			
 			Model model
 			) {
+		System.out.println("출력 : "+ empDTO);
 		EmpDTO dto = empService.getEmpno2(empDTO);
 		System.out.println("conroller empno2 : "+ dto);
 		model.addAttribute("dto", dto);
@@ -83,10 +85,25 @@ public class EmpController {
 	) {
 		System.out.println(empDTO);
 		int countUpdate = empService.modifyEmp(empDTO);
-		System.out.println("없대요 : "+ countUpdate);
+		System.out.println("없댓개수요 : "+ countUpdate);
 		
 		////////////////////////////////////////////////
 		return "redirect:emp";
 	}
 	
+	
+	@RequestMapping(value="/joinEmp", method=RequestMethod.GET )
+	public String joinEmp() {
+		return "joinEmp";
+	}
+	@RequestMapping(value="/joinEmp", method=RequestMethod.POST )
+	public String joinEmpPost(
+		@RequestBody	
+		EmpDTO empDTO
+	) {
+		// 전달 받고
+		// 확인하고
+		// db에 넣게
+		return "joinEmp";
+	}
 }
