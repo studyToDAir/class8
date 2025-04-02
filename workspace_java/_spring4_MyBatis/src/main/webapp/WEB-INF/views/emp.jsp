@@ -17,6 +17,14 @@
 	</header>
 	<main>
 		<a href="joinEmp">등록</a><br>
+		<form method="get" action="emp">
+			<select name="type">
+				<option value="ename">ename</option>
+				<option value="sal">sal(이상)</option>
+				<option value="ej">ename + job</option>
+			</select>
+			<input type="text" id="search" name="keyword" value="${dto.ename }"><button type="submit">검색</button>
+		</form>
 		<section>
 			<article>
 				<table border="1">
@@ -24,6 +32,7 @@
 						<tr>
 							<th>empno</th>
 							<th>ename</th>
+							<th>sal</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -32,6 +41,7 @@
 								<tr>
 									<td>${dto.empno}</td>
 									<td><a href="detailEmp?empno=${dto.empno}">${dto.ename}</a></td>
+									<td>${dto.sal}</td>
 								</tr>
 							</c:forEach>
 						</c:if>

@@ -44,4 +44,35 @@ public class EmpServiceImpl implements EmpService {
 		return countUpdate;
 	}
 	
+	@Override
+	public int joinEmp(EmpDTO empDTO) {
+		int countUpdate = empDAO.insertEmp(empDTO);
+		return countUpdate;
+	}
+	
+	@Override
+	public int retireEmp(EmpDTO empDTO) {
+		int countUpdate = empDAO.deleteEmp(empDTO);
+		return countUpdate;
+	}
+
+	@Override
+	public List<EmpDTO> getEmpSearchList(EmpDTO empDTO) {
+		
+		if("ename".equals(empDTO.getType())) {
+			
+			empDTO.setEname( empDTO.getKeyword() );
+
+		} else if(empDTO.getType() != null && empDTO.getType().equals("sal")) {
+			try {
+				int sal = Integer.parseInt( empDTO.getKeyword() );
+				empDTO.setSal( sal );
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		List list = empDAO.selectEmpSearchList(empDTO);
+		return list;
+	}
 }

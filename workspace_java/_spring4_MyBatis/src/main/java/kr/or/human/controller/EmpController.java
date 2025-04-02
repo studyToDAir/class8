@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.or.human.dto.EmpDTO;
 import kr.or.human.service.EmpService;
@@ -21,12 +22,14 @@ public class EmpController {
 	EmpService empService;
 
 	@RequestMapping(value="/emp", method=RequestMethod.GET)
-	public String listEmp(Model model) {
+	public String listEmp(Model model, EmpDTO dto) {
 		
-		List<EmpDTO> list = empService.getEmpList();
+//		List<EmpDTO> list = empService.getEmpList();
+		List<EmpDTO> list = empService.getEmpSearchList(dto);
 		System.out.println("list.size : "+ list.size());
 		
 		model.addAttribute("list", list);
+		model.addAttribute("dto", dto);
 		
 		return "emp";
 	}
@@ -96,14 +99,32 @@ public class EmpController {
 	public String joinEmp() {
 		return "joinEmp";
 	}
+	
+	@ResponseBody
 	@RequestMapping(value="/joinEmp", method=RequestMethod.POST )
-	public String joinEmpPost(
+	public   int joinEmpPost(
 		@RequestBody	
 		EmpDTO empDTO
 	) {
 		// 전달 받고
 		// 확인하고
-		// db에 넣게
-		return "joinEmp";
+		System.out.println("[POST] joinEmp empDTO : "+ empDTO);
+		// db에 넣기
+		int count = empService.joinEmp(empDTO);
+		System.out.println("추가 결과 : "+ count);
+		return count;
+	}
+	@RequestMapping(value="/retireEmp", method=RequestMethod.GET )
+	public String retireEmp(
+			EmpDTO empDTO
+	) {
+		// 전달 받고
+		// 확인하고
+		System.out.println("[GET] retireEmp empDTO : "+ empDTO);
+		// db에 넣기
+		int count = empService.retireEmp(empDTO);
+		System.out.println("삭제 결과 : "+ count);
+		
+		return "redirect:emp";
 	}
 }

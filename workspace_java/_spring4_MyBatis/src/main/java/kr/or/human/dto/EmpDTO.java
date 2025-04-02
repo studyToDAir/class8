@@ -14,13 +14,16 @@ import lombok.Data;
 @Data
 public class EmpDTO {
 	
-	private int empno;		// 사원번호
+	private Integer empno;		// 사원번호
 	private String ename;	// 사원명
 	private String job;
-	private int mgr;
+	private Integer mgr;
 	private Date hiredate;
-	private int sal;
+	private int sal = -1;
 	private Integer comm;
-	private int deptno;
+	private Integer deptno;
+	
+	private String type;
+	private String keyword;
 
 }
