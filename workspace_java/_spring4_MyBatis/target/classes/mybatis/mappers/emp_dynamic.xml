@@ -10,14 +10,45 @@
 			<if test="ename != null and ename != ''    ">
 				and upper(ename) like upper('%' || #{ename} || '%')
 			</if>
-			<if test="type != ename  and  keyword != '' and keyword != null  ">
-				and upper(ename) like upper('%' || #{keyword} || '%')
+			<if test=" (job != null and job != '') ">
+<!-- 				and upper(ename) like upper('%' || #{ename} || '%') -->
+				or upper(job) like upper('%' || #{job} || '%')
 			</if>
+			
 			<if test=" sal != -1 ">
 				and sal <![CDATA[  >=  ]]> #{sal}
 			</if>
+			
+			<if test="type == 'ename'  and  (keyword != '' and keyword != null) ">
+				and upper(ename) like upper('%' || #{keyword} || '%')
+			</if>
 		</where>
 	</select>
+	
+	<select id="choose" resultType="empDTO" parameterType="empDTO">
+		select * from emp2
+		
+		<choose>
+			<when test="ename != null and ename != ''    ">
+				and upper(ename) like upper('%' || #{ename} || '%')
+			</when>
+			<when test="job != null and job != ''    ">
+				and upper(job) like upper('%' || #{job} || '%')
+			</when>
+			<otherwise>
+				and deptno = 20
+			</otherwise>
+		</choose>
+		
+	</select>
+	
+	<select id="foreach" resultType="empDTO" parameterType="empDTO">
+		select * from emp2
+		where empno in (7566, 7698)
+		
+		
+	</select>
+	
 
 </mapper>
 

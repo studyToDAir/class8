@@ -1613,6 +1613,16 @@ as select * from emp;
 select * from emp2
 where ename = '' or '1'='1';
 
+select max(empno), min(empno) from emp2;
+
+create sequence seq_emp2
+start with 8000;
+
+
+select * from emp2
+where upper(ename) like upper('%a%')
+and upper(job) like upper('%a%')
+;
 
 
 

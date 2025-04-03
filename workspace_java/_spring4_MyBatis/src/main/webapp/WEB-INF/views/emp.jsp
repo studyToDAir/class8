@@ -21,15 +21,18 @@
 			<select name="type">
 				<option value="ename">ename</option>
 				<option value="sal">sal(이상)</option>
-				<option value="ej">ename + job</option>
+				<option value="ej">Ename + Job</option><!-- 'e'name+'j'ob -->
 			</select>
-			<input type="text" id="search" name="keyword" value="${dto.ename }"><button type="submit">검색</button>
+			<input type="text" id="search" name="keyword" value="${dto.keyword }"><button type="submit">검색</button>
 		</form>
 		<section>
 			<article>
+			<form method="get" action="emp">
+				<input type="submit" value="선택된 것만 조회">
 				<table border="1">
 					<thead>
 						<tr>
+							<th>선택</th>
 							<th>empno</th>
 							<th>ename</th>
 							<th>sal</th>
@@ -39,6 +42,9 @@
 						<c:if test="${ not empty list }">
 							<c:forEach var="dto" items="${list}" varStatus="loop">
 								<tr>
+									<td>
+										<input type="checkbox" name="empnos" value="${dto.empno}">
+									</td>
 									<td>${dto.empno}</td>
 									<td><a href="detailEmp?empno=${dto.empno}">${dto.ename}</a></td>
 									<td>${dto.sal}</td>
@@ -53,7 +59,7 @@
 
 					</tbody>
 				</table>
-
+			</form>
 			</article>
 		</section>
 	</main>

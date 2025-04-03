@@ -37,6 +37,7 @@ public class EmpDAO {
 			// [SQL 준비]
 			String query = " select * from"; // select * fromemp
 			query += " emp";
+			
 			PreparedStatement ps = con.prepareStatement(query);
 
 			// [SQL 실행] 및 [결과 확보]

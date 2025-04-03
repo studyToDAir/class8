@@ -24,6 +24,8 @@ public class EmpController {
 	@RequestMapping(value="/emp", method=RequestMethod.GET)
 	public String listEmp(Model model, EmpDTO dto) {
 		
+		System.out.println(dto);
+		
 //		List<EmpDTO> list = empService.getEmpList();
 		List<EmpDTO> list = empService.getEmpSearchList(dto);
 		System.out.println("list.size : "+ list.size());
