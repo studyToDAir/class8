@@ -1652,14 +1652,16 @@ SELECT * from emp;
 
 create table emp2
 as select * from emp;
+
 truncate table emp2;
+
 DECLARE
     v_seq NUMBER := 1; 
 BEGIN
     FOR i IN 1..100 LOOP
         INSERT INTO emp2 (empno, ename, job, mgr, hiredate, sal, comm, deptno)
         SELECT 
-            empno -i, 
+            empno - i, 
             TO_CHAR(i)||ename,
             job,
             mgr - i, 
@@ -1672,7 +1674,6 @@ BEGIN
     COMMIT;
 END;
 /
-
 ;
 
 
@@ -1682,4 +1683,48 @@ order by ename;
 select count(*) from emp2;
 
 
+select * from emp;
+
+-- SMITH의 empno, ename, mgr 옆에다가 상사의 empno, ename, mgr
+select 
+    a.empno, a.ename, a.mgr, 
+    b.empno, b.ename, b.mgr, 
+    c.empno, c.ename, c.mgr,
+    d.empno, d.ename, d.mgr
+from emp a, emp b, emp c, emp d
+where a.mgr = b.empno
+and a.ename = 'SMITH'
+and b.mgr = c.empno
+and c.mgr = d.empno;
+
+select * from emp
+where mgr is null
+union all
+select * from emp
+where mgr = (select empno from emp
+where mgr is null);
+
+
+with emp_recu (lv, empno, ename, mgr)
+as (
+    select
+        1 as lv, empno, ename, mgr
+    from 
+        emp
+    where
+        mgr is null
+        
+    union all
+    
+    select
+       er.lv+1 as lv, e.empno, lpad('  ', er.lv*4) || e.ename, e.mgr
+    from
+        emp_recu er -- 재귀호출
+        left outer join emp e on (e.mgr = er.empno) -- 대상 테이블
+    where
+        e.mgr is not null
+)
+search depth first by empno desc set sort_empno
+select * from emp_recu
+order by sort_empno;
 

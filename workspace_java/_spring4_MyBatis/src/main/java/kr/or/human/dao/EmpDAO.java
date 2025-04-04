@@ -14,4 +14,5 @@ public interface EmpDAO {
 	public int insertEmp(EmpDTO empDTO);
 	public int deleteEmp(EmpDTO empDTO);
 	public List<EmpDTO> selectEmpSearchList(EmpDTO dto);
+	public int totalList();
 }
