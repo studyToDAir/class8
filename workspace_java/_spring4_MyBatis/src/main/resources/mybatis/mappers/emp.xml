@@ -7,6 +7,18 @@
 	<select id="selectEmp" resultType="kr.or.human.dto.EmpDTO">
 		select * from emp2
 	</select>
+
+	<select id="selectPageEmp" resultType="kr.or.human.dto.EmpDTO">
+		select rnum, ename from (
+		    select rownum as rnum, ename from (
+		        select ename from emp2
+		        order by ename
+		    )
+		)
+	<![CDATA[
+		where rnum >= #{indexStart} and rnum <= #{indexEnd}
+	]]>
+	</select>
 	
 	<select id="selectOneEmp" resultType="kr.or.human.dto.EmpDTO">
 		select * from emp2 

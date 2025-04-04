@@ -13,27 +13,28 @@ public class EmpDAOImpl implements EmpDAO {
 
 	@Autowired
 	SqlSession sqlSession;
-	
+
 	@Override
 	public List<EmpDTO> selectEmpList() {
 		List<EmpDTO> result = sqlSession.selectList("mapper.emp.selectEmp");
 		System.out.println("result : "+ result);
 		return result;
 	}
-	
+
 	@Override
 	public EmpDTO selectOneEmp() {
 		EmpDTO dto = sqlSession.selectOne("mapper.emp.selectOneEmp");
 		System.out.println("dto: "+ dto);
 		return dto;
 	}
-	
+
 	@Override
 	public EmpDTO selectOneEmpno(int empno) {
 		EmpDTO dto = sqlSession.selectOne("mapper.emp.selectEmpno", empno);
 		System.out.println("dto: "+ dto);
 		return dto;
 	}
+
 	@Override
 	public EmpDTO selectOneEmpno2(EmpDTO empDTO) {
 		EmpDTO dto = sqlSession.selectOne("mapper.emp.selectEmpno2", empDTO);
@@ -44,7 +45,7 @@ public class EmpDAOImpl implements EmpDAO {
 	@Override
 	public int updateEmp(EmpDTO empDTO) {
 		int countUpdate = -1;
-		
+
 		try {
 			countUpdate = sqlSession.update("mapper.emp.udpateEmp", empDTO);
 		} catch (Exception e) {
@@ -98,7 +99,8 @@ public class EmpDAOImpl implements EmpDAO {
 	
 	@Override
 	public List<EmpDTO> selectEmpSearchList(EmpDTO dto) {
-		List<EmpDTO> result = sqlSession.selectList("mapper.emp.dynamic.selectEmp", dto);
+//		List<EmpDTO> result = sqlSession.selectList("mapper.emp.dynamic.selectEmp", dto);
+		List<EmpDTO> result = sqlSession.selectList("mapper.emp.page.selectPageEmp", dto);
 		System.out.println("result : "+ result);
 		return result;
 	}

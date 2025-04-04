@@ -27,4 +27,10 @@ public class EmpDTO {
 	private String keyword;
 
 	private List empnos;
+	
+	private int page;	// 현재 페이지
+	private int viewCount;	// 페이지당 보여줄 수 countPerPage rowPerPage
+	private int indexStart;
+	private int indexEnd;
+	
 }

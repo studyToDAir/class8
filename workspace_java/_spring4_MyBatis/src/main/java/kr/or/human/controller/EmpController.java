@@ -26,6 +26,11 @@ public class EmpController {
 		
 		System.out.println(dto);
 		
+		int page = 3;
+		int viewCount = 3;
+		dto.setPage(page);
+		dto.setViewCount(viewCount);
+		
 //		List<EmpDTO> list = empService.getEmpList();
 		List<EmpDTO> list = empService.getEmpSearchList(dto);
 		System.out.println("list.size : "+ list.size());

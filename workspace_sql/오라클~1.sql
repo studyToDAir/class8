@@ -1621,10 +1621,65 @@ start with 8000;
 
 select * from emp2
 where upper(ename) like upper('%a%')
-and upper(job) like upper('%a%')
+or upper(job) like upper('%a%')
 ;
 
 
+select * from emp2
+-- where empno = 7566 or empno = 7698
+where empno in (7566, 7698);
+
+select rnum, result2.* from (
+    select rownum as rnum, result1.* from (
+        select * from emp2
+        order by ename
+    ) result1
+)result2
+where rnum >= 7 and rnum <=9
+;
+
+/* 5 */ select job, count(*) as cnt
+/* 1 */ from emp
+/* 2 */ where sal > 1000 /*and cnt > 3*/
+/* 3 */ group by job
+/* 4 */ having count(*) >= 3
+/* 6 */ order by cnt desc;
+
+
+
+insert into emp2
+SELECT * from emp;
+
+create table emp2
+as select * from emp;
+truncate table emp2;
+DECLARE
+    v_seq NUMBER := 1; 
+BEGIN
+    FOR i IN 1..100 LOOP
+        INSERT INTO emp2 (empno, ename, job, mgr, hiredate, sal, comm, deptno)
+        SELECT 
+            empno -i, 
+            TO_CHAR(i)||ename,
+            job,
+            mgr - i, 
+            hiredate + MOD(i, 30),
+            sal + (i * 10),
+            comm,
+            deptno
+        FROM emp;
+    END LOOP;
+    COMMIT;
+END;
+/
+
+;
+
+
+select * from emp2
+order by ename;
+
+select count(*) from emp2;
 
 
 

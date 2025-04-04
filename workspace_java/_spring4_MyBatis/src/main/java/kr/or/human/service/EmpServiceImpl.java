@@ -59,8 +59,6 @@ public class EmpServiceImpl implements EmpService {
 	@Override
 	public List<EmpDTO> getEmpSearchList(EmpDTO empDTO) {
 		
-
-		
 		if("ename".equals(empDTO.getType())) {
 			
 			empDTO.setEname( empDTO.getKeyword() );
@@ -74,7 +72,32 @@ public class EmpServiceImpl implements EmpService {
 			}
 		}
 		
+		int page = empDTO.getPage();
+		int viewCount = empDTO.getViewCount();
+		
+		int indexStart = (viewCount * (page-1)) + 1;
+		int indexEnd = page * viewCount;
+		
+		empDTO.setIndexStart(indexStart);
+		empDTO.setIndexEnd(indexEnd);
+		
 		List list = empDAO.selectEmpSearchList(empDTO);
 		return list;
 	}
+	
+	void paging() {
+		int page = 3;
+		int viewCount = 10;
+		
+//		int idxStart = 21;
+//		int idxEnd = 30;
+		
+//		20+1
+//		(10 * 2) +1
+//		(viewCount * 2) +1
+//		(viewCount * (3-1)) +1
+		int idxStart = (viewCount * (page-1)) + 1;
+		int idxEnd = page * viewCount;
+	}
+	
 }
