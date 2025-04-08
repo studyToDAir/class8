@@ -1728,3 +1728,7 @@ search depth first by empno desc set sort_empno
 select * from emp_recu
 order by sort_empno;
 
+
+select count(*) from emp2;
+
+

@@ -78,9 +78,13 @@ public class CheckFilter implements Filter{
 			|| 	servletPath.indexOf("/resources/") != -1
 			|| 	servletPath.startsWith("/resources/")
 		) {
+			
 			return true;
+			
 		} else {
+			
 			return false;
+			
 		}
 	}
 	
