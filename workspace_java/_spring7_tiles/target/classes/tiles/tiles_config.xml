@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+
+	<definition name="baseLayout" template="/WEB-INF/views/layout/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
+		<put-attribute name="side" value="/WEB-INF/views/common/side.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
+	</definition>
+
+	<definition name="baseLayout2" template="/WEB-INF/views/layout/layout2.jsp">
+		<put-attribute name="content" value="/WEB-INF/views/main/chzizicc.jsp" />		
+	</definition>
+
+	<definition name="toon" extends="baseLayout">
+		<put-attribute name="content" value="/WEB-INF/views/main/webtoon.jsp" />		
+	</definition>
+
+	<definition name="chzz" extends="baseLayout">
+		<put-attribute name="content" value="/WEB-INF/views/main/chzizicc.jsp" />		
+	</definition>
+	
+	<definition name="login" extends="baseLayout2">
+		<put-attribute name="title" value="로그인 페이지" />		
+		<put-attribute name="content" value="/WEB-INF/views/main/webtoon.jsp" />		
+	</definition>
+
+
+<!-- 	<definition name="*.tiles" extends="baseLayout"> -->
+	<definition name="*" extends="baseLayout">
+		<put-attribute name="content" value="/WEB-INF/views/main/{1}.jsp" />		
+	</definition>
+
+	<definition name="*/*" extends="baseLayout">
+		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp" />		
+	</definition>
+
+
+
+</tiles-definitions>
