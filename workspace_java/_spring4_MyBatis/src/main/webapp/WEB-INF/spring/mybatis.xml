@@ -22,11 +22,31 @@
 		<property name="password" value="${jdbc.password}"></property>
 	</bean>
 
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource"></property>
-		<property name="configLocation" value="classpath:mybatis/model/modelConfig.xml"></property>
-		<property name="mapperLocations" value="classpath:mybatis/mappers/*.xml"></property>
-	</bean>
+<!-- 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"> -->
+<!-- 		<property name="dataSource" ref="dataSource"></property> -->
+<!-- 		<property name="configLocation" value="classpath:mybatis/model/modelConfig.xml"></property> -->
+<!-- 		<property name="mapperLocations" value="classpath:mybatis/mappers/*.xml"></property> -->
+<!-- 	</bean> -->
+
+
+	<!-- sql 출력을 위한 스파이 -->
+	 <bean id="dataSource2" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
+	   <constructor-arg ref="dataSource" />
+	   <property name="logFormatter">
+	     <bean class="net.sf.log4jdbc.tools.Log4JdbcCustomFormatter">
+	       <property name="loggingType" value="MULTI_LINE" />
+	       <property name="sqlPrefix" value="SQL : "/>
+	     </bean>
+	   </property>
+	 </bean>
+	
+	<!-- 스파이로 교체 -->
+	 <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	  <property name="dataSource" ref="dataSource2"></property>
+	  <property name="configLocation" value="classpath:mybatis/model/modelConfig.xml"></property>
+	  <property name="mapperLocations" value="classpath:mybatis/mappers/*.xml"></property>
+	 </bean> 
+
 
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSessionFactory"></constructor-arg>
